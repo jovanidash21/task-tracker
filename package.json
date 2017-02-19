@@ -30,6 +30,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-refetch": "^1.0.0",
+    "react-search-input": "^0.10.4",
     "serve-favicon": "~2.3.0",
     "webpack": "^2.2.1"
   }
