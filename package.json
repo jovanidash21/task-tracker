@@ -29,6 +29,7 @@
     "passport-local-mongoose": "^4.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-refetch": "^1.0.0",
     "serve-favicon": "~2.3.0",
     "webpack": "^2.2.1"
   }
