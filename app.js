@@ -4,10 +4,42 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var flash = require('connect-flash');
+var mongoose = require('mongoose');
+
+var options = {
+  server: {
+    socketOptions: {
+      keepAlive: 300000, connectTimeoutMS: 30000
+    }
+  },
+  replset: {
+    socketOptions: {
+      keepAlive: 300000, connectTimeoutMS : 30000
+    }
+  }
+};
 
 var index = require('./routes/index');
 
 var app = express();
+
+// load all models directory files
+fs.readdirSync(__dirname + '/models').forEach(function(filename) {
+  if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
+});
+
+passport.use(new LocalStrategy(usersData.authenticate()));
+passport.serializeUser(usersData.serializeUser());
+passport.deserializeUser(usersData.deserializeUser());
+
+// mongoose configuration
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI, options);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,6 +52,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  saveUninitialized: true,
+  resave: false
+}));
+
+// passport configuration
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(flash());
 
 app.use('/', index);
 

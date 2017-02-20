@@ -10,14 +10,17 @@ html
         .container
             .card
             .card
+                if (alertMessage.length > 0)
+                    p.alert-message
+                        | #{alertMessage}
                 h1.title Login
-                form
+                form(action='/login', method='post')
                     .input-container
-                        input(type='text', required='required', autocomplete='off')
+                        input(name='username', type='text', required='required', autocomplete='off')
                         label Username
                         .bar
                     .input-container
-                        input(type='password', required='required', autocomplete='off')
+                        input(name='password', type='password', required='required', autocomplete='off')
                         label Password
                         .bar
                     .button-container
@@ -28,25 +31,25 @@ html
                 h1.title
                     | Register
                     .close
-                form
+                form(action='/signup', method='post')
                     .input-container
-                        input(type='text', required='required', autocomplete='off')
+                        input(name='username', type='text', required='required', autocomplete='off')
                         label Username
                         .bar
                     .input-container
-                        input(type='text', required='required', autocomplete='off')
+                        input(name='firstName', type='text', required='required', autocomplete='off')
                         label First Name
                         .bar
                     .input-container
-                        input(type='text', required='required', autocomplete='off')
+                        input(name='lastName', type='text', required='required', autocomplete='off')
                         label Last Name
                         .bar
                     .input-container
-                        input(type='password', required='required', autocomplete='off')
+                        input(name='password', id='password', type='password', required='required', autocomplete='off')
                         label Password
                         .bar
                     .input-container
-                        input(type='password', required='required', autocomplete='off')
+                        input(name='confirmPassword', id='confirmPassword', type='password', required='required', autocomplete='off')
                         label Confirm Password
                         .bar
                     .button-container
@@ -54,3 +57,4 @@ html
                             span Next
         script(type='text/javascript', src='/javascripts/jquery.min.js')
         script(type='text/javascript', src='/javascripts/login.js')
+        script(type='text/javascript', src='/javascripts/custom.js')

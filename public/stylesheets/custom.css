@@ -15,13 +15,19 @@ body.login-page .card:first-child
 }
 body.login-page .card:nth-child(2)
 {
-    padding: 60px 0 40px 0;
+    padding: 40px 0;
 }
 body.login-page .card.alt
 {
     top: 30px;
 }
-body.login-page .card:first-child .title
+body.login-page .card:nth-child(2) .alert-message
+{
+    color: #a93127;
+    font-size: 17px;
+    margin: 10px 60px;
+}
+body.login-page .card:nth-child(2) .title
 {
     margin: 0 0 21px;
 }
