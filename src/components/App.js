@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import Header from './Header/Index';
 
 class App extends Component {
-  render() {
-    return(
-      <h1>Hello {this.props.name}!</h1>
-    )
-  }
-};
+    render() {
+        return(
+            <div>
+                <Header />
+            </div>
+        )
+    }
+}
 
 export default App;
