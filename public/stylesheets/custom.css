@@ -27,7 +27,7 @@ body.login-page .card:first-child .title
 }
 body.login-page .card.alt .title
 {
-    margin: 0 0 10px;
+    margin: 0;
 }
 body.login-page .container.active .card.alt
 {
@@ -39,7 +39,7 @@ body.login-page .card .input-container
 }
 body.login-page .card.alt .input-container
 {
-    margin: 0 60px 12px;
+    margin: 0 60px 5px;
 }
 .container.active .card.alt .input-container:nth-child(4) {
     -webkit-transition-delay: .7s;
@@ -54,12 +54,13 @@ body.login-page .card.alt .input-container label
 {
     font-size: 17px;
     height: 40px;
+    padding: 9px 0 0;
 }
 body.login-page .card:nth-child(2) .button-container
 {
     padding: 15px;
 }
-body.login-page .card .button-container button
+body.login-page .card.alt .button-container
 {
-    padding: 15px;
+    margin: 5px 60px;
 }
