@@ -19,6 +19,7 @@ var usersDataSchema = new Schema
             twitter: {type: String, default: ''},
             instagram: {type: String, default: ''},
             googleplus: {type: String, default: ''},
+            linkedin: {type: String, default: ''},
             youtube: {type: String, default: ''},
             github: {type: String, default: ''},
             codepen: {type: String, default: ''}
