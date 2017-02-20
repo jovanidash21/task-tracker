@@ -13,18 +13,16 @@ html
                 h1.title Login
                 form
                     .input-container
-                        input(type='#{type}', id='username', required='required')
-                        label(for='username') Username
+                        input(type='text', required='required', autocomplete='off')
+                        label Username
                         .bar
                     .input-container
-                        input(type='#{type}', id='password', required='required')
-                        label(for='password') Password
+                        input(type='password', required='required', autocomplete='off')
+                        label Password
                         .bar
                     .button-container
                         button
                             span Go
-                    .footer
-                        a(href='#') Forgot your password?
             .card.alt
                 .toggle
                 h1.title
@@ -32,16 +30,24 @@ html
                     .close
                 form
                     .input-container
-                        input(type='#{type}', id='newUsername', required='required')
-                        label(for='newUsername') Username
+                        input(type='text', required='required', autocomplete='off')
+                        label Username
                         .bar
                     .input-container
-                        input(type='#{type}', id='newPassword', required='required')
-                        label(for='newPassword') Password
+                        input(type='text', required='required', autocomplete='off')
+                        label First Name
                         .bar
                     .input-container
-                        input(type='#{type}', id='confirmPassword', required='required')
-                        label(for='confirmPassword') Confirm Password
+                        input(type='text', required='required', autocomplete='off')
+                        label Last Name
+                        .bar
+                    .input-container
+                        input(type='password', required='required', autocomplete='off')
+                        label Password
+                        .bar
+                    .input-container
+                        input(type='password', required='required', autocomplete='off')
+                        label Confirm Password
                         .bar
                     .button-container
                         button

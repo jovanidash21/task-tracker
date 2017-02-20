@@ -9,3 +9,57 @@ body.login-page .container
     left: 50%;
     transform: translate(-50%, -50%);
 }
+body.login-page .card:first-child
+{
+    padding: 0;
+}
+body.login-page .card:nth-child(2)
+{
+    padding: 60px 0 40px 0;
+}
+body.login-page .card.alt
+{
+    top: 30px;
+}
+body.login-page .card:first-child .title
+{
+    margin: 0 0 21px;
+}
+body.login-page .card.alt .title
+{
+    margin: 0 0 10px;
+}
+body.login-page .container.active .card.alt
+{
+    padding: 20px 0 40px;
+}
+body.login-page .card .input-container
+{
+    margin: 0 60px 21px;
+}
+body.login-page .card.alt .input-container
+{
+    margin: 0 60px 12px;
+}
+.container.active .card.alt .input-container:nth-child(4) {
+    -webkit-transition-delay: .7s;
+    transition-delay: .7s;
+}
+.container.active .card.alt .input-container:nth-child(5) {
+    -webkit-transition-delay: .8s;
+    transition-delay: .8s;
+}
+body.login-page .card.alt .input-container input,
+body.login-page .card.alt .input-container label
+{
+    font-size: 17px;
+    height: 40px;
+}
+body.login-page .card:nth-child(2) .button-container
+{
+    padding: 15px;
+}
+body.login-page .card .button-container button
+{
+    padding: 15px;
+}
