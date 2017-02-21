@@ -5,11 +5,11 @@ class Header extends Component {
         return(
             <section id="header">
                 <header>
-                    <h1>Overflow</h1>
-                    <p>By HTML5 UP</p>
+                    <h1>Jovani Warguez</h1>
+                    <p>Todo List</p>
                 </header>
                 <footer>
-                    <a href="#banner" className="button style2 scrolly-middle">Proceed as anticipated</a>
+                    <a href="#banner" className="button style2 scrolly-middle">Proceed</a>
                 </footer>
             </section>
         )
