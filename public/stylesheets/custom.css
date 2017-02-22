@@ -2,7 +2,7 @@ body
 {
     overflow-y: scroll;
 }
-body.login-page .container
+body.login-page .form
 {
     margin: 0;
     position: absolute;
@@ -10,66 +10,13 @@ body.login-page .container
     left: 50%;
     transform: translate(-50%, -50%);
 }
-body.login-page .card:first-child
-{
-    padding: 0;
-}
-body.login-page .card:nth-child(2)
-{
-    padding: 40px 0;
-}
-body.login-page .card.alt
-{
-    top: 25px;
-}
-body.login-page .card:nth-child(2) .alert-message
+body.login-page .alert-message
 {
     color: #a93127;
     font-size: 17px;
     margin: 10px 60px;
 }
-body.login-page .card:nth-child(2) .title
+body.login-page .form
 {
-    margin: 0 0 21px;
-}
-body.login-page .card.alt .title
-{
-    margin: 0;
-}
-body.login-page .container.active .card.alt
-{
-    padding: 20px 0 40px;
-}
-body.login-page .container .card.alt h1,
-body.login-page .container .card.alt form
-{
-    display: none;
-}
-body.login-page .container.active .card.alt h1,
-body.login-page .container.active .card.alt form
-{
-    display: block;
-}
-body.login-page .card .input-container
-{
-    margin: 0 60px 21px;
-}
-body.login-page .card.alt .input-container
-{
-    margin: 0 60px 3px;
-}
-body.login-page .card.alt .input-container input,
-body.login-page .card.alt .input-container label
-{
-    font-size: 16px;
-    height: 40px;
-    padding: 9px 0 0;
-}
-body.login-page .card:nth-child(2) .button-container
-{
-    padding: 15px;
-}
-body.login-page .card.alt .button-container
-{
-    margin: 9px 60px;
+    max-width: 350px;
 }

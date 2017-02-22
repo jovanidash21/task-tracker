@@ -7,54 +7,27 @@ html
         link(rel='stylesheet', type='text/css', href='/stylesheets/login.css')
         link(rel='stylesheet', type='text/css', href='/stylesheets/custom.css')
     body.login-page
-        .container
-            .card
-            .card
-                if (alertMessage.length > 0)
-                    p.alert-message
-                        | #{alertMessage}
-                h1.title Login
-                form(action='/login', method='post')
-                    .input-container
-                        input(name='username', type='text', required='required', autocomplete='off')
-                        label Username
-                        .bar
-                    .input-container
-                        input(name='password', type='password', required='required', autocomplete='off')
-                        label Password
-                        .bar
-                    .button-container
-                        button
-                            span Go
-            .card.alt
-                .toggle
-                h1.title
-                    | Register
-                    .close
-                form(action='/signup', method='post')
-                    .input-container
-                        input(name='username', type='text', required='required', autocomplete='off')
-                        label Username
-                        .bar
-                    .input-container
-                        input(name='firstName', type='text', required='required', autocomplete='off')
-                        label First Name
-                        .bar
-                    .input-container
-                        input(name='lastName', type='text', required='required', autocomplete='off')
-                        label Last Name
-                        .bar
-                    .input-container
-                        input(name='password', id='password', type='password', required='required', autocomplete='off')
-                        label Password
-                        .bar
-                    .input-container
-                        input(name='confirmPassword', id='confirmPassword', type='password', required='required', autocomplete='off')
-                        label Confirm Password
-                        .bar
-                    .button-container
-                        button
-                            span Next
+        .form
+            .thumbnail
+                img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg')
+            if (alertMessage.length > 0)
+                p.alert-message
+                    | #{alertMessage}
+            form.login-form(action='/login', method='post')
+                input(name='username', type='text', placeholder='username', required='required', autocomplete='off')
+                input(name='password', type='password', placeholder='password', required='required', autocomplete='off')
+                button login
+                p.message Not registered?&nbsp;
+                    a(href='#') Create an account
+            form.register-form(action='/signup', method='post')
+                input(name='username', type='text', placeholder='username', required='required', autocomplete='off')
+                input(name='firstName', type='text', placeholder='first name', required='required', autocomplete='off')
+                input(name='lastName', type='text', placeholder='last name', required='required', autocomplete='off')
+                input(name='password', id='password', type='password', placeholder='password', required='required', autocomplete='off')
+                input(name='confirmPassword', id='confirmPassword', type='password', placeholder='confirm password', required='required', autocomplete='off')
+                button create
+                p.message Already registered?&nbsp;
+                    a(href='#') Sign In
         script(type='text/javascript', src='/javascripts/jquery.min.js')
         script(type='text/javascript', src='/javascripts/login.js')
         script(type='text/javascript', src='/javascripts/custom.js')
