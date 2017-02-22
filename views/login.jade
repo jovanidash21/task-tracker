@@ -3,7 +3,6 @@ html
     head
         title= title
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        link(rel='stylesheet', type='text/css', href='/stylesheets/font-awesome.min.css')
         link(rel='stylesheet', type='text/css', href='/stylesheets/login.css')
         link(rel='stylesheet', type='text/css', href='/stylesheets/custom.css')
     body.login-page
@@ -21,10 +20,12 @@ html
                     a(href='#') Create an account
             form.register-form(action='/signup', method='post')
                 input(name='username', type='text', placeholder='username', required='required', autocomplete='off')
-                input(name='firstName', type='text', placeholder='first name', required='required', autocomplete='off')
-                input(name='lastName', type='text', placeholder='last name', required='required', autocomplete='off')
-                input(name='password', id='password', type='password', placeholder='password', required='required', autocomplete='off')
-                input(name='confirmPassword', id='confirmPassword', type='password', placeholder='confirm password', required='required', autocomplete='off')
+                .input-container
+                    input(name='firstName', type='text', placeholder='first name', required='required', autocomplete='off')
+                    input(name='lastName', type='text', placeholder='last name', required='required', autocomplete='off')
+                .input-container
+                    input(name='password', id='password', type='password', placeholder='password', required='required', autocomplete='off')
+                    input(name='confirmPassword', id='confirmPassword', type='password', placeholder='confirm password', required='required', autocomplete='off')
                 button create
                 p.message Already registered?&nbsp;
                     a(href='#') Sign In

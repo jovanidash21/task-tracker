@@ -19,4 +19,17 @@ body.login-page .alert-message
 body.login-page .form
 {
     max-width: 350px;
+    width: 100%;
+}
+body.login-page .form .input-container input
+{
+    width: 48%;
+}
+body.login-page .form .input-container input:first-child
+{
+    margin-right: 1%;
+}
+body.login-page .form .input-container input:last-child
+{
+    margin-left: 1%;
 }
