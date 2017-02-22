@@ -33,3 +33,22 @@ body.login-page .form .input-container input:last-child
 {
     margin-left: 1%;
 }
+section.loading-animation
+{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+section.loading-animation > div
+{
+    height: 65px;
+    width: 65px;
+}
+section.loading-animation > div > div
+{
+    background-color: #35b88f;
+    height: 21px;
+    width: 21px;
+}
