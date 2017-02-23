@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
+import TasksList from './TasksList';
+import EditProfile from './EditProfile';
 
 class Body extends Component {
     render() {
-        return(
-            <div>
-                <article className="container box style3">
-                    <header>
-                        <h2>My Tasks</h2>
-                    </header>
+        const { user, editingProfileState, handleEditProfileState } = this.props;
 
-                </article>
-                <article className="container box style3">
-                    <section>
-                        <header>
-                            <h3>Task 1</h3>
-                            <p>Message</p>
-                        </header>
-                    </section>
-                </article>
-                <article className="container box style3">
-                    <section>
-                        <header>
-                            <h3>Task 2</h3>
-                            <p>Message</p>
-                        </header>
-                    </section>
-                </article>
-            </div>
+        return(
+            editingProfileState == false
+                ?
+                <TasksList
+                    user={user}
+                />
+                :
+                <EditProfile
+                    user={user}
+                    handleEditProfileState={handleEditProfileState}
+                />
         )
     }
 }

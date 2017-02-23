@@ -2,25 +2,33 @@ import React, { Component } from 'react';
 
 class Header extends Component {
     render() {
-        const { user } = this.props;
+        const { user, editingProfileState, handleEditProfileState } = this.props;
 
         return(
-            <section id="banner">
-                <header>
-                    <h1>
-                        {user.firstName}&nbsp;
-                        {user.lastName}
-                    </h1>
-                    <p>
-                        &#64;{user.username}
-                    </p>
-                </header>
-                <footer>
-                    <a className="button style2">
-                        Edit Profile
-                    </a>
-                </footer>
-            </section>
+            editingProfileState == false
+                ?
+                <section id="banner">
+                    <header>
+                        <h1>
+                            {user.firstName}&nbsp;
+                            {user.lastName}
+                        </h1>
+                        <p>
+                            &#64;{user.username}
+                        </p>
+                    </header>
+                    <footer>
+                        <a className="button style2" onClick={handleEditProfileState}>
+                            Edit Profile
+                        </a>
+                    </footer>
+                </section>
+                :
+                <section id="banner">
+                    <header>
+                        <h1>Edit Profile</h1>
+                    </header>
+                </section>
         )
     }
 }
