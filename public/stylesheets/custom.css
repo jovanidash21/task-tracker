@@ -52,3 +52,17 @@ section.loading-animation > div > div
     height: 21px;
     width: 21px;
 }
+section#banner h1
+{
+    font-weight: 600;
+    font-size: 2em;
+    letter-spacing: 10px;
+}
+@media screen and (max-width: 736px)
+{
+    section#banner h1
+    {
+        font-size: 1.75em;
+        letter-spacing: 6px;
+    }
+}

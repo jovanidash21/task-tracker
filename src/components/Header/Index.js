@@ -2,16 +2,23 @@ import React, { Component } from 'react';
 
 class Header extends Component {
     render() {
+        const { user } = this.props;
+
         return(
-            <section id="header">
+            <section id="banner">
                 <header>
-                    <h1>Jovani Warguez</h1>
-                    <p>Todo List</p>
+                    <h1>
+                        {user.firstName}&nbsp;
+                        {user.lastName}
+                    </h1>
+                    <p>
+                        &#64;{user.username}
+                    </p>
                 </header>
                 <footer>
-                    <button className="button style2 scrolly-middle">
+                    <a className="button style2">
                         Edit Profile
-                    </button>
+                    </a>
                 </footer>
             </section>
         )

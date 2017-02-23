@@ -4,9 +4,11 @@ import Menu from './Menu';
 
 class Footer extends Component {
     render() {
+        const { user } = this.props;
+
         return(
             <section id="footer">
-                <SocialLinks />
+                <SocialLinks user={user} />
                 <Menu />
             </section>
         )
