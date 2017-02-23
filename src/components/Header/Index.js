@@ -9,7 +9,9 @@ class Header extends Component {
                     <p>Todo List</p>
                 </header>
                 <footer>
-                    <a href="#banner" className="button style2 scrolly-middle">Proceed</a>
+                    <button className="button style2 scrolly-middle">
+                        Edit Profile
+                    </button>
                 </footer>
             </section>
         )
