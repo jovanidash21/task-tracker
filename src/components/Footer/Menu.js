@@ -5,8 +5,14 @@ class Menu extends Component {
         return(
             <div className="copyright">
                 <ul className="menu">
-                    <li>&copy; Untitled. All rights reserved.</li>
-                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    <li>
+                        &copy; 2017. All rights reserved.
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            GitHub Project
+                        </a>
+                    </li>
                 </ul>
             </div>
         )
