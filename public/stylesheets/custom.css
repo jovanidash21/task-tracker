@@ -10,6 +10,10 @@ body.login-page .form
     left: 50%;
     transform: translate(-50%, -50%);
 }
+body.login-page .form .thumbnail
+{
+    padding: 21px 21px;
+}
 body.login-page .alert-message
 {
     color: #a93127;
