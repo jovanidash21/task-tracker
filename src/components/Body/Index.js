@@ -4,7 +4,12 @@ import EditProfile from './EditProfile';
 
 class Body extends Component {
     render() {
-        const { user, editingProfileState, handleEditProfileState } = this.props;
+        const {
+            user,
+            editingProfileState,
+            handleEditProfileState,
+            handleEditProfileSubmit
+        } = this.props;
 
         return(
             editingProfileState == false
@@ -16,6 +21,7 @@ class Body extends Component {
                 <EditProfile
                     user={user}
                     handleEditProfileState={handleEditProfileState}
+                    handleEditProfileSubmit={handleEditProfileSubmit}
                 />
         )
     }

@@ -14,6 +14,7 @@ class App extends Component {
             editingProfile: false
         };
         this.handleEditProfileState = this.handleEditProfileState.bind(this);
+        this.handleEditProfileSubmit = this.handleEditProfileSubmit.bind(this);
     }
     handleEditProfileState(event) {
         event.preventDefault();
@@ -23,6 +24,12 @@ class App extends Component {
         this.setState({
             editingProfile: toggleEditingProfile
         });
+    }
+    handleEditProfileSubmit(userID, updateProfile) {
+        const { editProfile } = this.props;
+
+        console.log(updateProfile);
+        editProfile(userID, updateProfile)
     }
     render() {
         const { userDataFetch } = this.props;
@@ -34,24 +41,32 @@ class App extends Component {
             return <Error error={userDataFetch.reason} />
         }
         else if (userDataFetch.fulfilled) {
-            const [user] = userDataFetch.value;
+            const [ user ] = userDataFetch.value;
+            const {
+                editingProfile
+            } = this.state;
+            const {
+                handleEditProfileState,
+                handleEditProfileSubmit
+            } = this;
 
             return(
                 <div>
                     <Header
                         user={user}
-                        editingProfileState={this.state.editingProfile}
-                        handleEditProfileState={this.handleEditProfileState}
+                        editingProfileState={editingProfile}
+                        handleEditProfileState={handleEditProfileState}
                     />
                     <Body
                         user={user}
-                        editingProfileState={this.state.editingProfile}
-                        handleEditProfileState={this.handleEditProfileState}
+                        editingProfileState={editingProfile}
+                        handleEditProfileState={handleEditProfileState}
+                        handleEditProfileSubmit={handleEditProfileSubmit}
                     />
                     <Footer
                         user={user}
-                        editingProfileState={this.state.editingProfile}
-                        handleEditProfileState={this.handleEditProfileState}
+                        editingProfileState={editingProfile}
+                        handleEditProfileState={handleEditProfileState}
                     />
                 </div>
             )
@@ -61,6 +76,13 @@ class App extends Component {
 
 export default connect(() => {
     return {
-        userDataFetch: `/api/user`
+        userDataFetch: `/api/user`,
+        editProfile: (userID, updateProfile) => ({
+            editMovieFetch: {
+                url: `/api/${userID}/`,
+                method: 'PATCH',
+                body: JSON.stringify(updateProfile)
+            }
+        })
     }
 })(App);
