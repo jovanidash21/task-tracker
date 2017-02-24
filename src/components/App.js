@@ -28,8 +28,11 @@ class App extends Component {
     handleEditProfileSubmit(userID, updateProfile) {
         const { editProfile } = this.props;
 
-        console.log(updateProfile);
-        editProfile(userID, updateProfile)
+        editProfile(userID, updateProfile);
+
+        this.setState({
+            editingProfile: false
+        });
     }
     render() {
         const { userDataFetch } = this.props;
@@ -75,13 +78,22 @@ class App extends Component {
 }
 
 export default connect(() => {
+    const refreshUserData = {
+        userDataFetch: {
+            url:`/api/user`,
+            force: true,
+            refreshing: true
+        }
+    };
+
     return {
         userDataFetch: `/api/user`,
         editProfile: (userID, updateProfile) => ({
             editMovieFetch: {
                 url: `/api/${userID}/`,
                 method: 'PATCH',
-                body: JSON.stringify(updateProfile)
+                body: JSON.stringify(updateProfile),
+                then: () => (refreshUserData)
             }
         })
     }
