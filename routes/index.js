@@ -6,12 +6,12 @@ router.get('/', function(req, res, next) {
     if(req.user){
         res.render('index', {
             user: req.user,
-            title: 'Todo List'
+            title: 'Task Tracker'
         });
     }
     else {
         res.render('login', {
-            title: 'Login | Todo List',
+            title: 'Login | Task Tracker',
             alertMessage: req.flash('alertMessage')
         });
     }
