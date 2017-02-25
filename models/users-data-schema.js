@@ -2,17 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 var timestamps = require('mongoose-timestamp');
+var tasksData = require('./tasks-data-schema');
 
 var usersDataSchema = new Schema
 (
     {
         firstName: {type:String, default: ''},
         lastName: {type:String, default: ''},
-        tasks: {
-            type: Array,
-            default: []
-        },
         email: {type:String, default: ''},
+        tasks: {type: Schema.Types.ObjectId, ref: 'tasksData'},
         socialLinks: [{
             website: {type: String, default: ''},
             facebook: {type: String, default: ''},
@@ -24,7 +22,6 @@ var usersDataSchema = new Schema
             github: {type: String, default: ''},
             codepen: {type: String, default: ''}
         }]
-
     },
     {
         collection: 'usersData'
@@ -34,4 +31,4 @@ var usersDataSchema = new Schema
 usersDataSchema.plugin(passportLocalMongoose);
 usersDataSchema.plugin(timestamps);
 
-usersData = mongoose.model('usersData', usersDataSchema);
+module.exports = mongoose.model('usersData', usersDataSchema);

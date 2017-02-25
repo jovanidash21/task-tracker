@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var usersData = require('../models/users-data-schema');
 
 router.get('/', function(req, res, next) {
     if(req.user){

@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var usersData = require('../models/users-data-schema');
+var tasksData = require('../models/tasks-data-schema');
 
 router.get('/user', function(req, res, next) {
     if (req.user === undefined) {

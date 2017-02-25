@@ -1,11 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var timestamps = require('mongoose-timestamp');
+var usersData = require('./users-data-schema');
 
 var tasksDataSchema = new Schema
 (
     {
         name: {type:String, default: 'My Task'},
+        owner: {type: Schema.Types.ObjectId, ref: 'usersData'},
         isComplete : {type : Boolean, default : false}
     },
     {
@@ -15,4 +17,4 @@ var tasksDataSchema = new Schema
 
 tasksDataSchema.plugin(timestamps);
 
-tasksData= mongoose.model('tasksData', tasksDataSchema);
+module.exports = mongoose.model('tasksData', tasksDataSchema);

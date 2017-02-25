@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -27,12 +26,9 @@ var options = {
 var index = require('./routes/index');
 var api = require('./routes/api');
 
-var app = express();
+var usersData = require('./models/users-data-schema');
 
-// load all models directory files
-fs.readdirSync(__dirname + '/models').forEach(function(filename) {
-  if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
-});
+var app = express();
 
 passport.use(new LocalStrategy(usersData.authenticate()));
 passport.serializeUser(usersData.serializeUser());
