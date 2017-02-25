@@ -10,7 +10,10 @@ var usersDataSchema = new Schema
         firstName: {type:String, default: ''},
         lastName: {type:String, default: ''},
         email: {type:String, default: ''},
-        tasks: {type: Schema.Types.ObjectId, ref: 'tasksData'},
+        tasks: [{
+            type: Schema.Types.ObjectId,
+            ref: 'tasksData'
+        }],
         socialLinks: [{
             website: {type: String, default: ''},
             facebook: {type: String, default: ''},

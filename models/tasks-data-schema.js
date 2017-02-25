@@ -7,7 +7,10 @@ var tasksDataSchema = new Schema
 (
     {
         name: {type:String, default: 'My Task'},
-        owner: {type: Schema.Types.ObjectId, ref: 'usersData'},
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: 'usersData'
+        },
         isComplete : {type : Boolean, default : false}
     },
     {
