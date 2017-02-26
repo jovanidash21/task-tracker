@@ -21,18 +21,14 @@ class App extends Component {
 
         var toggleEditingProfile = !this.state.editingProfile;
 
-        this.setState({
-            editingProfile: toggleEditingProfile
-        });
+        this.setState({editingProfile: toggleEditingProfile});
     }
     handleEditProfileSubmit(userID, updateProfile) {
         const { editProfile } = this.props;
 
         editProfile(userID, updateProfile);
 
-        this.setState({
-            editingProfile: false
-        });
+        this.setState({editingProfile: false});
     }
     render() {
         const { userDataFetch } = this.props;
@@ -45,9 +41,7 @@ class App extends Component {
         }
         else if (userDataFetch.fulfilled) {
             const [ user ] = userDataFetch.value;
-            const {
-                editingProfile
-            } = this.state;
+            const { editingProfile } = this.state;
             const {
                 handleEditProfileState,
                 handleEditProfileSubmit

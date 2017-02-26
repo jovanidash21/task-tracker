@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 
 class Header extends Component {
     render() {
-        const { user, editingProfileState, handleEditProfileState } = this.props;
+        const {
+            user,
+            editingProfileState,
+            handleEditProfileState
+        } = this.props;
 
         return(
             editingProfileState == false
