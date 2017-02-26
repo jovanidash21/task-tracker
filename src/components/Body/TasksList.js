@@ -1,35 +1,53 @@
 import React, { Component } from 'react';
+import { connect, PromiseState } from 'react-refetch';
+import LoadingAnimation from '../LoadingAnimation/Index';
+import Error from '../Error/Index';
+import TaskContainer from './TaskContainer';
 
 class TasksList extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
-        const { user } = this.props;
+        const { userTasksDataFetch } = this.props;
+        const allUserTasksDataFetch = PromiseState.all([userTasksDataFetch]);
 
-        return(
-            <div>
+        if (allUserTasksDataFetch.pending) {
+            return (
                 <article className="container box style3">
-                    <header>
-                        <h2>My Tasks</h2>
-                    </header>
+                    <LoadingAnimation />
                 </article>
-                <article className="container box style3">
-                    <section>
+            );
+        }
+        else if (allUserTasksDataFetch.rejected) {
+            return <Error error={allUserTasksDataFetch.reason} />
+        }
+        else if (allUserTasksDataFetch.fulfilled) {
+            const [ userTasksData ] = allUserTasksDataFetch.value;
+            const userTasks = userTasksData.userTasks;
+
+            return(
+                <div>
+                    <article className="container box style3">
                         <header>
-                            <h3>Task 1</h3>
-                            <p>Message</p>
+                            <h2>My Tasks</h2>
                         </header>
-                    </section>
-                </article>
-                <article className="container box style3">
-                    <section>
-                        <header>
-                            <h3>Task 2</h3>
-                            <p>Message</p>
-                        </header>
-                    </section>
-                </article>
-            </div>
-        )
+                    </article>
+                    {
+                        userTasks.tasks.map(userTask =>
+                            <TaskContainer
+                                key={userTask._id}
+                                userTask={userTask} />
+                        )
+                    }
+                </div>
+            )
+        }
     }
 }
 
-export default TasksList;
+export default connect((props) => {
+    return {
+        userTasksDataFetch: `/api/${props.user._id}/tasks`
+    }
+})(TasksList);
