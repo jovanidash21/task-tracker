@@ -10,9 +10,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            editingProfile: false
-        };
+        this.state = {editingProfile: false};
         this.handleEditProfileState = this.handleEditProfileState.bind(this);
         this.handleEditProfileSubmit = this.handleEditProfileSubmit.bind(this);
     }
