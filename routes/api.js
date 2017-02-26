@@ -34,4 +34,26 @@ router.patch('/:userID', function(req, res, next) {
     }
 });
 
+router.get('/:userID/tasks/', function(req, res, next) {
+    if (req.user === undefined) {
+        res.json({});
+    }
+    else {
+        var userID = req.params.userID;
+        if (req.user._id == userID) {
+            usersData.findOne({_id: userID}, 'tasks').populate('tasks').exec(function(err, userTasksData) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json({userTasksData});
+                }
+            });
+        }
+        else {
+            res.json({});
+        }
+    }
+});
+
 module.exports = router;
