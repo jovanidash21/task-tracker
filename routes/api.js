@@ -18,14 +18,19 @@ router.patch('/:userID', function(req, res, next) {
     }
     else {
         var userID = req.params.userID;
-        usersData.findByIdAndUpdate({_id: userID}, req.body, function(err, results) {
-            if(err){
-                res.end(err);
-            }
-            else {
-                res.json(results);
-            }
-        });
+        if (req.user._id == userID) {
+            usersData.findByIdAndUpdate({_id: userID}, req.body, function(err, results) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    res.json(results);
+                }
+            });
+        }
+        else {
+            res.redirect('/');
+        }
     }
 });
 
