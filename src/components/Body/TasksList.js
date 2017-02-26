@@ -5,9 +5,6 @@ import Error from '../Error/Index';
 import TaskContainer from './TaskContainer';
 
 class TasksList extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const { userTasksDataFetch } = this.props;
         const allUserTasksDataFetch = PromiseState.all([userTasksDataFetch]);
@@ -37,7 +34,8 @@ class TasksList extends Component {
                         userTasks.tasks.map(userTask =>
                             <TaskContainer
                                 key={userTask._id}
-                                userTask={userTask} />
+                                userTask={userTask}
+                            />
                         )
                     }
                 </div>
