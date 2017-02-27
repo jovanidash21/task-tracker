@@ -66,6 +66,14 @@ section#banner h1
     font-size: 2em;
     letter-spacing: 10px;
 }
+article.container header i.fa
+{
+    color: #ff0f34;
+}
+article.container header h3
+{
+    text-transform: none;
+}
 input[type="button"].style4,
 input[type="submit"].style4,
 input[type="reset"].style4,
