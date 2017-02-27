@@ -163,4 +163,51 @@ router.patch('/:userID/task/:taskID', function(req, res, next) {
     }
 });
 
+router.delete('/:userID/task/:taskID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.redirect('/');
+    }
+    else {
+        var userID = req.params.userID;
+        var taskID = req.params.taskID;
+        if (req.user._id == userID) {
+            tasksData.findById(taskID, function(err, taskData) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    if (taskData.owner != userID) {
+                        res.redirect('/');
+                    }
+                    else {
+                        taskData.remove(function(err) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                usersData.findByIdAndUpdate(
+                                    userID,
+                                    { $pull: { tasks: taskID }},
+                                    { new: true, upsert: true },
+                                    function(err, results) {
+                                        if(err) {
+                                            res.end(err);
+                                        }
+                                        else {
+                                            res.json(results);
+                                        }
+                                    }
+                                );
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        else {
+            res.redirect('/');
+        }
+    }
+});
+
 module.exports = router;
