@@ -1,11 +1,55 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 
 class TaskContainer extends Component {
     constructor(props) {
         super(props);
 
         this.state = {editingTask: false};
+        this.tasksDetails = this.tasksDetails.bind(this);
         this.handleEditTaskState = this.handleEditTaskState.bind(this);
+    }
+
+    tasksDetails() {
+        const { userTask } = this.props;
+
+        return (
+            <div>
+                <hr />
+                <p>
+                    <b>
+                        Created :&nbsp;
+                    </b>
+                    {
+                        moment(userTask.createdAt)
+                            .tz("Asia/Manila")
+                            .format("MMM DD, YYYY hh:mm A")
+                    }
+                </p>
+                <p>
+                    <b>
+                        Last Updated :&nbsp;
+                    </b>
+                    {
+                        moment(userTask.updatedAt)
+                            .tz("Asia/Manila")
+                            .format("MMM DD, YYYY hh:mm A")
+                    }
+                </p>
+                <p>
+                    <b>
+                        Status :&nbsp;
+                    </b>
+                    {
+                        userTask.isComplete == false
+                            ?
+                            "Undone"
+                            :
+                            "Done"
+                    }
+                </p>
+            </div>
+        )
     }
     handleEditTaskState(event) {
         event.preventDefault();
@@ -17,7 +61,10 @@ class TaskContainer extends Component {
     render() {
         const { userTask } = this.props;
         const { editingTask } = this.state;
-        const { handleEditTaskState } = this;
+        const {
+            tasksDetails,
+            handleEditTaskState
+        } = this;
 
         return(
             <article className="container box style3">
@@ -31,6 +78,9 @@ class TaskContainer extends Component {
                                         {userTask.name}
                                     </h3>
                                 </header>
+                                {
+                                    tasksDetails()
+                                }
                                 <div className="row 50%">
                                     <div className="12u$">
                                         <ul className="actions">
@@ -50,6 +100,9 @@ class TaskContainer extends Component {
                                 <header>
                                     <input ref="taskName" type="text" className="text" placeholder="Task Name" defaultValue={userTask.name}/>
                                 </header>
+                                {
+                                    tasksDetails()
+                                }
                                 <div className="row 50%">
                                     <div className="12u$">
                                         <ul className="actions">
