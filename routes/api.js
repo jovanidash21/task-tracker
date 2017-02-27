@@ -19,7 +19,7 @@ router.patch('/:userID', function(req, res, next) {
     else {
         var userID = req.params.userID;
         if (req.user._id == userID) {
-            usersData.findByIdAndUpdate({_id: userID}, req.body, function(err, results) {
+            usersData.findByIdAndUpdate(userID, req.body, function(err, results) {
                 if(err) {
                     res.end(err);
                 }
@@ -41,7 +41,7 @@ router.get('/:userID/tasks/', function(req, res, next) {
     else {
         var userID = req.params.userID;
         if (req.user._id == userID) {
-            usersData.findOne({_id: userID}, 'tasks').populate('tasks').exec(function(err, userTasks) {
+            usersData.findById(userID, 'tasks').populate('tasks').exec(function(err, userTasks) {
                 if(err) {
                     res.end(err);
                 }
