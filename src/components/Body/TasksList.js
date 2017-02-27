@@ -26,9 +26,33 @@ class TasksList extends Component {
             return(
                 <div>
                     <article className="container box style3">
-                        <header>
-                            <h2>My Tasks</h2>
-                        </header>
+                        <form>
+                            <header>
+                                <h2>My Tasks</h2>
+                            </header>
+                            <div className="row 50%">
+                                <div className="12u$">
+                                    <hr />
+                                    <ul className="actions">
+                                        <li>
+                                            <a className="button style1">
+                                                Add
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="button style3" >
+                                                Mark All Done
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="button style5" >
+                                                Delete All
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
                     </article>
                     {
                         userTasks.tasks.map(userTask =>
@@ -38,6 +62,35 @@ class TasksList extends Component {
                             />
                         )
                     }
+                    <article className="container box style3">
+                        <form>
+                            <header>
+                                <h2>My Tasks</h2>
+                            </header>
+                            <div className="row 50%">
+                                <div className="12u$">
+                                    <hr />
+                                    <ul className="actions">
+                                        <li>
+                                            <a className="button style1">
+                                                Add
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="button style3" >
+                                                Mark All Done
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="button style5" >
+                                                Delete All
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </article>
                 </div>
             )
         }
