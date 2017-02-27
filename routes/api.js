@@ -141,14 +141,19 @@ router.patch('/:userID/task/:taskID', function(req, res, next) {
                     res.end(err);
                 }
                 else {
-                    taskData.update(req.body, function(err, results) {
-                        if(err) {
-                            res.end(err);
-                        }
-                        else {
-                            res.json(results);
-                        }
-                    });
+                    if (taskData.owner != userID) {
+                        res.redirect('/');
+                    }
+                    else {
+                        taskData.update(req.body, function(err, results) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.json(results);
+                            }
+                        });
+                    }
                 }
             });
         }
