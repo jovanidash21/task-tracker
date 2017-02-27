@@ -77,46 +77,91 @@ class EditProfile extends Component {
                             <h2>Social Media</h2>
                         </header>
                         {
-                            user.socialLinks.map(socialLink =>
+                            user.socialLinks.length == 0
+                                ?
                                 <div className="row 50%">
                                     <div className="12u$">
                                         <label htmlFor="website">Website:</label>
-                                        <input id="website" ref="website" type="text" className="text" placeholder="Website Link" defaultValue={socialLink.website} />
+                                        <input id="website" ref="website" type="text" className="text" placeholder="Website Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="facebook">Facebook:</label>
-                                        <input id="facebook" ref="facebook" type="text" className="text" placeholder="Facebook Profile Link" defaultValue={socialLink.facebook} />
+                                        <input id="facebook" ref="facebook" type="text" className="text" placeholder="Facebook Profile Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="twitter">Twitter:</label>
-                                        <input id="twitter" ref="twitter" type="text" className="text" placeholder="Twitter Profile Link" defaultValue={socialLink.twitter} />
+                                        <input id="twitter" ref="twitter" type="text" className="text" placeholder="Twitter Profile Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="instagram">Instagram:</label>
-                                        <input id="instagram" ref="instagram" type="text" className="text" placeholder="Instagram Profile Link" defaultValue={socialLink.instagram} />
+                                        <input id="instagram" ref="instagram" type="text" className="text" placeholder="Instagram Profile Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="googleplus">Google Plus:</label>
-                                        <input id="googleplus" ref="googleplus" type="text" className="text" placeholder="Google Plus Profile Link" defaultValue={socialLink.googleplus} />
+                                        <input id="googleplus" ref="googleplus" type="text" className="text" placeholder="Google Plus Profile Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="linkedin">LinkedIn:</label>
-                                        <input id="linkedin" ref="linkedin" type="text" className="text" placeholder="LinkedIn Profile Link" defaultValue={socialLink.linkedin} />
+                                        <input id="linkedin" ref="linkedin" type="text" className="text" placeholder="LinkedIn Profile Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="youtube">YouTube:</label>
-                                        <input id="youtube" ref="youtube" type="text" className="text" placeholder="YouTube Profile Link" defaultValue={socialLink.youtube} />
+                                        <input id="youtube" ref="youtube" type="text" className="text" placeholder="YouTube Profile Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="github">GitHub:</label>
-                                        <input id="github" ref="github" type="text" className="text" placeholder="GitHub Profile Link" defaultValue={socialLink.github} />
+                                        <input id="github" ref="github" type="text" className="text" placeholder="GitHub Profile Link" />
                                     </div>
                                     <div className="12u$">
                                         <label htmlFor="codepen">CodePen:</label>
-                                        <input id="codepen" ref="codepen" type="text" className="text" placeholder="CodePen Profile Link" defaultValue={socialLink.codepen} />
+                                        <input id="codepen" ref="codepen" type="text" className="text" placeholder="CodePen Profile Link" />
                                     </div>
                                 </div>
-                            )
+                                :
+                                <div>
+                                    {
+                                        user.socialLinks.map(socialLink =>
+                                            <div className="row 50%">
+                                                <div className="12u$">
+                                                    <label htmlFor="website">Website:</label>
+                                                    <input id="website" ref="website" type="text" className="text" placeholder="Website Link" defaultValue={socialLink.website} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="facebook">Facebook:</label>
+                                                    <input id="facebook" ref="facebook" type="text" className="text" placeholder="Facebook Profile Link" defaultValue={socialLink.facebook} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="twitter">Twitter:</label>
+                                                    <input id="twitter" ref="twitter" type="text" className="text" placeholder="Twitter Profile Link" defaultValue={socialLink.twitter} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="instagram">Instagram:</label>
+                                                    <input id="instagram" ref="instagram" type="text" className="text" placeholder="Instagram Profile Link" defaultValue={socialLink.instagram} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="googleplus">Google Plus:</label>
+                                                    <input id="googleplus" ref="googleplus" type="text" className="text" placeholder="Google Plus Profile Link" defaultValue={socialLink.googleplus} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="linkedin">LinkedIn:</label>
+                                                    <input id="linkedin" ref="linkedin" type="text" className="text" placeholder="LinkedIn Profile Link" defaultValue={socialLink.linkedin} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="youtube">YouTube:</label>
+                                                    <input id="youtube" ref="youtube" type="text" className="text" placeholder="YouTube Profile Link" defaultValue={socialLink.youtube} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="github">GitHub:</label>
+                                                    <input id="github" ref="github" type="text" className="text" placeholder="GitHub Profile Link" defaultValue={socialLink.github} />
+                                                </div>
+                                                <div className="12u$">
+                                                    <label htmlFor="codepen">CodePen:</label>
+                                                    <input id="codepen" ref="codepen" type="text" className="text" placeholder="CodePen Profile Link" defaultValue={socialLink.codepen} />
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                </div>
                         }
                         <div className="row 50%">
                             <div className="12u$">
