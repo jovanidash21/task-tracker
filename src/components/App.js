@@ -3,7 +3,8 @@ import { connect } from 'react-refetch';
 import LoadingAnimation from './LoadingAnimation/Index';
 import Error from './Error/Index';
 import Header from './Header/Index';
-import Body from './Body/Index';
+import TasksList from './TasksList/Index';
+import EditProfile from './EditProfile/Index';
 import Footer from './Footer/Index';
 
 class App extends Component {
@@ -52,12 +53,23 @@ class App extends Component {
                         editingProfileState={editingProfile}
                         handleEditProfileState={handleEditProfileState}
                     />
-                    <Body
-                        user={user}
-                        editingProfileState={editingProfile}
-                        handleEditProfileState={handleEditProfileState}
-                        handleEditProfileSubmit={handleEditProfileSubmit}
-                    />
+                    {
+                        editingProfile == false
+                            ?
+                            <TasksList
+                                user={user}
+                                editingProfileState={editingProfile}
+                                handleEditProfileState={handleEditProfileState}
+                                handleEditProfileSubmit={handleEditProfileSubmit}
+                            />
+                            :
+                            <EditProfile
+                                user={user}
+                                editingProfileState={editingProfile}
+                                handleEditProfileState={handleEditProfileState}
+                                handleEditProfileSubmit={handleEditProfileSubmit}
+                            />
+                    }
                     <Footer
                         user={user}
                         editingProfileState={editingProfile}
@@ -72,7 +84,7 @@ class App extends Component {
 export default connect(() => {
     const refreshUserData = {
         userDataFetch: {
-            url:`/api/user`,
+            url: `/api/user`,
             force: true,
             refreshing: true
         }
