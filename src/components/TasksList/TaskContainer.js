@@ -8,6 +8,7 @@ class TaskContainer extends Component {
         this.state = {editingTask: false};
         this.tasksDetails = this.tasksDetails.bind(this);
         this.handleEditTaskState = this.handleEditTaskState.bind(this);
+        this.handleEditTaskSubmit = this.handleEditTaskSubmit.bind(this);
     }
     tasksDetails() {
         const { userTask } = this.props;
@@ -57,12 +58,31 @@ class TaskContainer extends Component {
 
         this.setState({editingTask: toggleEditingTask});
     }
+    handleEditTaskSubmit(event) {
+        event.preventDefault();
+
+        const {
+            user,
+            userTask,
+            handleEditTaskSubmit
+        } = this.props;
+        let userID = user._id;
+        let taskID = userTask._id;
+        let updateTask = userTask;
+
+        userTask.name = this.refs.taskName.value;
+
+        handleEditTaskSubmit(userID, taskID, updateTask);
+
+        this.setState({editingTask: false});
+    }
     render() {
         const { userTask } = this.props;
         const { editingTask } = this.state;
         const {
             tasksDetails,
-            handleEditTaskState
+            handleEditTaskState,
+            handleEditTaskSubmit
         } = this;
 
         return(
@@ -118,7 +138,9 @@ class TaskContainer extends Component {
                                         <hr />
                                         <ul className="actions">
                                             <li>
-                                                <input type="submit" value="Update" />
+                                                <a className="button style1" onClick={handleEditTaskSubmit}>
+                                                    Update
+                                                </a>
                                             </li>
                                             <li>
                                                 <a className="button style3" onClick={handleEditTaskState}>

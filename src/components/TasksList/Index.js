@@ -10,6 +10,7 @@ class TasksList extends Component {
 
         this.handleAddTaskStart = this.handleAddTaskStart.bind(this);
         this.handleAddTaskEnd = this.handleAddTaskEnd.bind(this);
+        this.handleEditTaskSubmit = this.handleEditTaskSubmit.bind(this);
     }
     handleAddTaskStart(event) {
         event.preventDefault();
@@ -24,6 +25,11 @@ class TasksList extends Component {
         const { user, addTaskEnd } = this.props;
 
         addTaskEnd(user._id);
+    }
+    handleEditTaskSubmit(userID, taskID, updateTask) {
+        const { editTask } = this.props;
+
+        editTask(userID, taskID, updateTask);
     }
     render() {
         const { userTasksDataFetch } = this.props;
@@ -42,7 +48,12 @@ class TasksList extends Component {
         else if (allUserTasksDataFetch.fulfilled) {
             const [ userTasksData ] = allUserTasksDataFetch.value;
             const userTasks = userTasksData.userTasks;
-            const { handleAddTaskStart, handleAddTaskEnd } = this;
+            const { user } = this.props;
+            const {
+                handleAddTaskStart,
+                handleAddTaskEnd,
+                handleEditTaskSubmit
+            } = this;
 
             return(
                 <div>
@@ -79,7 +90,9 @@ class TasksList extends Component {
                         userTasks.tasks.map(userTask =>
                             <TaskContainer
                                 key={userTask._id}
+                                user={user}
                                 userTask={userTask}
+                                handleEditTaskSubmit={handleEditTaskSubmit}
                             />
                         )
                     }
@@ -140,6 +153,14 @@ export default connect((props) => {
             addTaskStartFetch: {
                 url: `/api/${userID}/tasks/end`,
                 method: 'POST',
+                andThen: () => (refreshUserTasksData)
+            }
+        }),
+        editTask: (userID, taskID, updateTask) => ({
+            addTaskStartFetch: {
+                url: `/api/${userID}/task/${taskID}`,
+                method: 'PATCH',
+                body: JSON.stringify(updateTask),
                 andThen: () => (refreshUserTasksData)
             }
         })

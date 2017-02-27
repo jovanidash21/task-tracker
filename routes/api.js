@@ -128,4 +128,34 @@ router.post('/:userID/tasks/end', function(req, res, next) {
     }
 });
 
+router.patch('/:userID/task/:taskID', function(req, res, next) {
+    if (req.user === undefined) {
+        res.redirect('/');
+    }
+    else {
+        var userID = req.params.userID;
+        var taskID = req.params.taskID;
+        if (req.user._id == userID) {
+            tasksData.findById(taskID, function(err, taskData) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    taskData.update(req.body, function(err, results) {
+                        if(err) {
+                            res.end(err);
+                        }
+                        else {
+                            res.json(results);
+                        }
+                    });
+                }
+            });
+        }
+        else {
+            res.redirect('/');
+        }
+    }
+});
+
 module.exports = router;
