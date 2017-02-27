@@ -10,6 +10,7 @@ class TaskContainer extends Component {
         this.handleEditTaskState = this.handleEditTaskState.bind(this);
         this.handleEditTaskNameSubmit = this.handleEditTaskNameSubmit.bind(this);
         this.handleEditTaskStatusSubmit = this.handleEditTaskStatusSubmit.bind(this);
+        this.handleDeleteTaskSubmit = this.handleDeleteTaskSubmit.bind(this);
     }
     tasksDetails() {
         const { userTask } = this.props;
@@ -93,6 +94,19 @@ class TaskContainer extends Component {
 
         handleEditTaskStatusSubmit(userID, taskID, updateTask);
     }
+    handleDeleteTaskSubmit(event) {
+        event.preventDefault();
+
+        const {
+            user,
+            userTask,
+            handleDeleteTaskSubmit,
+        } = this.props;
+        let userID = user._id;
+        let taskID = userTask._id;
+
+        handleDeleteTaskSubmit(userID, taskID)
+    }
     render() {
         const { userTask } = this.props;
         const { editingTask } = this.state;
@@ -100,7 +114,8 @@ class TaskContainer extends Component {
             tasksDetails,
             handleEditTaskState,
             handleEditTaskNameSubmit,
-            handleEditTaskStatusSubmit
+            handleEditTaskStatusSubmit,
+            handleDeleteTaskSubmit
         } = this;
 
         return(
@@ -154,7 +169,7 @@ class TaskContainer extends Component {
                                                 }
                                             </li>
                                             <li>
-                                                <a className="button style5" >
+                                                <a className="button style5" onClick={handleDeleteTaskSubmit}>
                                                     Delete
                                                 </a>
                                             </li>

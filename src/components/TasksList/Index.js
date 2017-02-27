@@ -12,6 +12,7 @@ class TasksList extends Component {
         this.handleAddTaskEnd = this.handleAddTaskEnd.bind(this);
         this.handleEditTaskNameSubmit = this.handleEditTaskNameSubmit.bind(this);
         this.handleEditTaskStatusSubmit = this.handleEditTaskStatusSubmit.bind(this);
+        this.handleDeleteTaskSubmit = this.handleDeleteTaskSubmit.bind(this);
     }
     handleAddTaskStart(event) {
         event.preventDefault();
@@ -37,6 +38,11 @@ class TasksList extends Component {
 
         editTask(userID, taskID, updateTask);
     }
+    handleDeleteTaskSubmit(userID, taskID) {
+        const { deleteTask } = this.props;
+
+        deleteTask(userID, taskID);
+    }
     render() {
         const { userTasksDataFetch } = this.props;
         const allUserTasksDataFetch = PromiseState.all([userTasksDataFetch]);
@@ -59,7 +65,8 @@ class TasksList extends Component {
                 handleAddTaskStart,
                 handleAddTaskEnd,
                 handleEditTaskNameSubmit,
-                handleEditTaskStatusSubmit
+                handleEditTaskStatusSubmit,
+                handleDeleteTaskSubmit
             } = this;
 
             return(
@@ -101,6 +108,7 @@ class TasksList extends Component {
                                 userTask={userTask}
                                 handleEditTaskNameSubmit={handleEditTaskNameSubmit}
                                 handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                handleDeleteTaskSubmit={handleDeleteTaskSubmit}
                             />
                         )
                     }
@@ -169,6 +177,13 @@ export default connect((props) => {
                 url: `/api/${userID}/task/${taskID}`,
                 method: 'PATCH',
                 body: JSON.stringify(updateTask),
+                andThen: () => (refreshUserTasksData)
+            }
+        }),
+        deleteTask: (userID, taskID) => ({
+            addTaskStartFetch: {
+                url: `/api/${userID}/task/${taskID}`,
+                method: 'DELETE',
                 andThen: () => (refreshUserTasksData)
             }
         })
