@@ -2,6 +2,10 @@ body
 {
     overflow-y: scroll;
 }
+a
+{
+    cursor: pointer;
+}
 body.login-page .form
 {
     margin: 0;
