@@ -23,11 +23,16 @@ class Header extends Component {
                     </header>
                     <footer>
                         <form action="/logout" method="post">
-                            <a className="button style2" onClick={handleEditProfileState}>
-                                Edit Profile
-                            </a>
-                            &nbsp;
-                            <input className="style4" type="submit" value="Logout" />
+                            <ul className="actions">
+                                <li>
+                                    <a className="button style2" onClick={handleEditProfileState}>
+                                        Edit Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <input className="style4" type="submit" value="Logout" />
+                                </li>
+                            </ul>
                         </form>
                     </footer>
                 </section>
