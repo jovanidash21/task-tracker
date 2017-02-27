@@ -18,38 +18,28 @@ class TaskContainer extends Component {
         return (
             <div>
                 <hr />
-                <p>
-                    <b>
-                        Created :&nbsp;
-                    </b>
-                    {
-                        moment(userTask.createdAt)
-                            .tz("Asia/Manila")
-                            .format("MMM DD, YYYY hh:mm A")
-                    }
-                </p>
-                <p>
-                    <b>
-                        Last Updated :&nbsp;
-                    </b>
-                    {
-                        moment(userTask.updatedAt)
-                            .tz("Asia/Manila")
-                            .format("MMM DD, YYYY hh:mm A")
-                    }
-                </p>
-                <p>
-                    <b>
-                        Status :&nbsp;
-                    </b>
-                    {
-                        userTask.isComplete == false
-                            ?
-                            "Undone"
-                            :
-                            "Done"
-                    }
-                </p>
+                <ul className="menu">
+                    <li>
+                        <b>
+                            Created :&nbsp;
+                        </b>
+                        {
+                            moment(userTask.createdAt)
+                                .tz("Asia/Manila")
+                                .format("MMM DD, YYYY hh:mm A")
+                        }
+                    </li>
+                    <li>
+                        <b>
+                            Last Updated :&nbsp;
+                        </b>
+                        {
+                            moment(userTask.updatedAt)
+                                .tz("Asia/Manila")
+                                .format("MMM DD, YYYY hh:mm A")
+                        }
+                    </li>
+                </ul>
             </div>
         )
     }

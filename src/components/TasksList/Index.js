@@ -73,12 +73,21 @@ class TasksList extends Component {
                 <div>
                     <article className="container box style3">
                         <form>
-                            <header>
-                                <h2>My Tasks</h2>
-                            </header>
+                            <div className="row">
+                                <div className="12u">
+                                    <select name="taskFilter">
+                                        <option value="allTasks">All Tasks</option>
+                                        <option value="undoneTasks">Undone Tasks</option>
+                                        <option value="doneTasks">Done Tasks</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </article>
+                    <article className="container box style3">
+                        <form>
                             <div className="row 50%">
                                 <div className="12u$">
-                                    <hr />
                                     <ul className="actions">
                                         <li>
                                             <a className="button style1" onClick={handleAddTaskStart}>
@@ -114,12 +123,8 @@ class TasksList extends Component {
                     }
                     <article className="container box style3">
                         <form>
-                            <header>
-                                <h2>My Tasks</h2>
-                            </header>
                             <div className="row 50%">
                                 <div className="12u$">
-                                    <hr />
                                     <ul className="actions">
                                         <li>
                                             <a className="button style1" onClick={handleAddTaskEnd}>
