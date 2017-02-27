@@ -41,14 +41,16 @@ router.get('/:userID/tasks/', function(req, res, next) {
     else {
         var userID = req.params.userID;
         if (req.user._id == userID) {
-            usersData.findById(userID, 'tasks').populate('tasks').exec(function(err, userTasks) {
-                if(err) {
-                    res.end(err);
-                }
-                else {
-                    res.json({userTasks});
-                }
-            });
+            usersData.findById(userID, 'tasks')
+                .populate('tasks')
+                .exec(function(err, userTasks) {
+                    if(err) {
+                        res.end(err);
+                    }
+                    else {
+                        res.json({userTasks});
+                    }
+                });
         }
         else {
             res.json({});
