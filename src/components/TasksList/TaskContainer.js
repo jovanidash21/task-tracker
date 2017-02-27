@@ -8,7 +8,8 @@ class TaskContainer extends Component {
         this.state = {editingTask: false};
         this.tasksDetails = this.tasksDetails.bind(this);
         this.handleEditTaskState = this.handleEditTaskState.bind(this);
-        this.handleEditTaskSubmit = this.handleEditTaskSubmit.bind(this);
+        this.handleEditTaskNameSubmit = this.handleEditTaskNameSubmit.bind(this);
+        this.handleEditTaskStatusSubmit = this.handleEditTaskStatusSubmit.bind(this);
     }
     tasksDetails() {
         const { userTask } = this.props;
@@ -58,13 +59,13 @@ class TaskContainer extends Component {
 
         this.setState({editingTask: toggleEditingTask});
     }
-    handleEditTaskSubmit(event) {
+    handleEditTaskNameSubmit(event) {
         event.preventDefault();
 
         const {
             user,
             userTask,
-            handleEditTaskSubmit
+            handleEditTaskNameSubmit,
         } = this.props;
         let userID = user._id;
         let taskID = userTask._id;
@@ -72,9 +73,25 @@ class TaskContainer extends Component {
 
         userTask.name = this.refs.taskName.value;
 
-        handleEditTaskSubmit(userID, taskID, updateTask);
+        handleEditTaskNameSubmit(userID, taskID, updateTask);
 
         this.setState({editingTask: false});
+    }
+    handleEditTaskStatusSubmit(event) {
+        event.preventDefault();
+
+        const {
+            user,
+            userTask,
+            handleEditTaskStatusSubmit,
+        } = this.props;
+        let userID = user._id;
+        let taskID = userTask._id;
+        let updateTask = userTask;
+
+        userTask.isComplete = !userTask.isComplete;
+
+        handleEditTaskStatusSubmit(userID, taskID, updateTask);
     }
     render() {
         const { userTask } = this.props;
@@ -82,7 +99,8 @@ class TaskContainer extends Component {
         const {
             tasksDetails,
             handleEditTaskState,
-            handleEditTaskSubmit
+            handleEditTaskNameSubmit,
+            handleEditTaskStatusSubmit
         } = this;
 
         return(
@@ -93,9 +111,22 @@ class TaskContainer extends Component {
                         <form>
                             <section>
                                 <header>
-                                    <h3>
-                                        {userTask.name}
-                                    </h3>
+                                    {
+                                        userTask.isComplete == false
+                                            ?
+                                            <h3>
+                                                {userTask.name}
+                                            </h3>
+                                            :
+                                            <div>
+                                                <i className="fa fa-check-square-o" />
+                                                <h3>
+                                                    <strike>
+                                                        {userTask.name}
+                                                    </strike>
+                                                </h3>
+                                            </div>
+                                    }
                                 </header>
                                 {
                                     tasksDetails()
@@ -110,9 +141,17 @@ class TaskContainer extends Component {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a className="button style3">
-                                                    Mark Done
-                                                </a>
+                                                {
+                                                    userTask.isComplete == false
+                                                        ?
+                                                        <a className="button style3" onClick={handleEditTaskStatusSubmit}>
+                                                            Mark Done
+                                                        </a>
+                                                        :
+                                                        <a className="button style3" onClick={handleEditTaskStatusSubmit}>
+                                                            Mark Undone
+                                                        </a>
+                                                }
                                             </li>
                                             <li>
                                                 <a className="button style5" >
@@ -138,7 +177,7 @@ class TaskContainer extends Component {
                                         <hr />
                                         <ul className="actions">
                                             <li>
-                                                <a className="button style1" onClick={handleEditTaskSubmit}>
+                                                <a className="button style1" onClick={handleEditTaskNameSubmit}>
                                                     Update
                                                 </a>
                                             </li>

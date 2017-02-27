@@ -10,7 +10,8 @@ class TasksList extends Component {
 
         this.handleAddTaskStart = this.handleAddTaskStart.bind(this);
         this.handleAddTaskEnd = this.handleAddTaskEnd.bind(this);
-        this.handleEditTaskSubmit = this.handleEditTaskSubmit.bind(this);
+        this.handleEditTaskNameSubmit = this.handleEditTaskNameSubmit.bind(this);
+        this.handleEditTaskStatusSubmit = this.handleEditTaskStatusSubmit.bind(this);
     }
     handleAddTaskStart(event) {
         event.preventDefault();
@@ -26,7 +27,12 @@ class TasksList extends Component {
 
         addTaskEnd(user._id);
     }
-    handleEditTaskSubmit(userID, taskID, updateTask) {
+    handleEditTaskNameSubmit(userID, taskID, updateTask) {
+        const { editTask } = this.props;
+
+        editTask(userID, taskID, updateTask);
+    }
+    handleEditTaskStatusSubmit(userID, taskID, updateTask) {
         const { editTask } = this.props;
 
         editTask(userID, taskID, updateTask);
@@ -52,7 +58,8 @@ class TasksList extends Component {
             const {
                 handleAddTaskStart,
                 handleAddTaskEnd,
-                handleEditTaskSubmit
+                handleEditTaskNameSubmit,
+                handleEditTaskStatusSubmit
             } = this;
 
             return(
@@ -92,7 +99,8 @@ class TasksList extends Component {
                                 key={userTask._id}
                                 user={user}
                                 userTask={userTask}
-                                handleEditTaskSubmit={handleEditTaskSubmit}
+                                handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
                             />
                         )
                     }
