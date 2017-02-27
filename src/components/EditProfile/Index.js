@@ -29,11 +29,11 @@ class EditProfile extends Component {
             codepen: this.refs.codepen.value
         });
 
-        user.username = this.refs.username.value;
-        user.firstName = this.refs.firstName.value;
-        user.lastName = this.refs.lastName.value;
-        user.email = this.refs.email.value;
-        user.socialLinks = socialLinks;
+        updateProfile.username = this.refs.username.value;
+        updateProfile.firstName = this.refs.firstName.value;
+        updateProfile.lastName = this.refs.lastName.value;
+        updateProfile.email = this.refs.email.value;
+        updateProfile.socialLinks = socialLinks;
 
         handleEditProfileSubmit(userID, updateProfile);
     }

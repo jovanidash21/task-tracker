@@ -71,7 +71,7 @@ class TaskContainer extends Component {
         let taskID = userTask._id;
         let updateTask = userTask;
 
-        userTask.name = this.refs.taskName.value;
+        updateTask.name = this.refs.taskName.value;
 
         handleEditTaskNameSubmit(userID, taskID, updateTask);
 
@@ -89,7 +89,7 @@ class TaskContainer extends Component {
         let taskID = userTask._id;
         let updateTask = userTask;
 
-        userTask.isComplete = !userTask.isComplete;
+        updateTask.isComplete = !updateTask.isComplete;
 
         handleEditTaskStatusSubmit(userID, taskID, updateTask);
     }
