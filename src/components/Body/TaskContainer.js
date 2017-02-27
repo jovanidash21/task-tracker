@@ -9,7 +9,6 @@ class TaskContainer extends Component {
         this.tasksDetails = this.tasksDetails.bind(this);
         this.handleEditTaskState = this.handleEditTaskState.bind(this);
     }
-
     tasksDetails() {
         const { userTask } = this.props;
 
@@ -83,10 +82,21 @@ class TaskContainer extends Component {
                                 }
                                 <div className="row 50%">
                                     <div className="12u$">
+                                        <hr />
                                         <ul className="actions">
                                             <li>
                                                 <a className="button style1" onClick={handleEditTaskState}>
-                                                    Edit Task
+                                                    Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a className="button style3">
+                                                    Mark Done
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a className="button style5" >
+                                                    Delete
                                                 </a>
                                             </li>
                                         </ul>
@@ -105,6 +115,7 @@ class TaskContainer extends Component {
                                 }
                                 <div className="row 50%">
                                     <div className="12u$">
+                                        <hr />
                                         <ul className="actions">
                                             <li>
                                                 <input type="submit" value="Update" />
