@@ -56,4 +56,76 @@ router.get('/:userID/tasks/', function(req, res, next) {
     }
 });
 
+router.post('/:userID/tasks/start', function(req, res, next) {
+    if (req.user === undefined) {
+        res.redirect('/');
+    }
+    else {
+        var userID = req.params.userID;
+        if (req.user._id == userID) {
+            var taskData = new tasksData({owner: userID});
+            taskData.save(function(err) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    var taskID = taskData._id;
+                    usersData.findByIdAndUpdate(
+                        userID,
+                        { $push: { tasks: { $each: [taskID], $position: 0 }}},
+                        { new: true, upsert: true },
+                        function(err, results) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.json(results);
+                            }
+                        }
+                    );
+                }
+            });
+        }
+        else {
+            res.redirect('/');
+        }
+    }
+});
+
+router.post('/:userID/tasks/end', function(req, res, next) {
+    if (req.user === undefined) {
+        res.redirect('/');
+    }
+    else {
+        var userID = req.params.userID;
+        if (req.user._id == userID) {
+            var taskData = new tasksData({owner: userID});
+            taskData.save(function(err) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    var taskID = taskData._id;
+                    usersData.findByIdAndUpdate(
+                        userID,
+                        { $push: { tasks: taskID }},
+                        { new: true, upsert: true },
+                        function(err, results) {
+                            if(err) {
+                                res.end(err);
+                            }
+                            else {
+                                res.json(results);
+                            }
+                        }
+                    );
+                }
+            });
+        }
+        else {
+            res.redirect('/');
+        }
+    }
+});
+
 module.exports = router;

@@ -5,6 +5,26 @@ import Error from '../Error/Index';
 import TaskContainer from './TaskContainer';
 
 class TasksList extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleAddTaskStart = this.handleAddTaskStart.bind(this);
+        this.handleAddTaskEnd = this.handleAddTaskEnd.bind(this);
+    }
+    handleAddTaskStart(event) {
+        event.preventDefault();
+
+        const { user, addTaskStart } = this.props;
+
+        addTaskStart(user._id);
+    }
+    handleAddTaskEnd(event) {
+        event.preventDefault();
+
+        const { user, addTaskEnd } = this.props;
+
+        addTaskEnd(user._id);
+    }
     render() {
         const { userTasksDataFetch } = this.props;
         const allUserTasksDataFetch = PromiseState.all([userTasksDataFetch]);
@@ -22,6 +42,7 @@ class TasksList extends Component {
         else if (allUserTasksDataFetch.fulfilled) {
             const [ userTasksData ] = allUserTasksDataFetch.value;
             const userTasks = userTasksData.userTasks;
+            const { handleAddTaskStart, handleAddTaskEnd } = this;
 
             return(
                 <div>
@@ -35,7 +56,7 @@ class TasksList extends Component {
                                     <hr />
                                     <ul className="actions">
                                         <li>
-                                            <a className="button style1">
+                                            <a className="button style1" onClick={handleAddTaskStart}>
                                                 Add
                                             </a>
                                         </li>
@@ -72,7 +93,7 @@ class TasksList extends Component {
                                     <hr />
                                     <ul className="actions">
                                         <li>
-                                            <a className="button style1">
+                                            <a className="button style1" onClick={handleAddTaskEnd}>
                                                 Add
                                             </a>
                                         </li>
@@ -98,7 +119,29 @@ class TasksList extends Component {
 }
 
 export default connect((props) => {
+    const refreshUserTasksData = {
+        userTasksDataFetch: {
+            url: `/api/${props.user._id}/tasks`,
+            force: true,
+            refreshing: true
+        }
+    };
+
     return {
-        userTasksDataFetch: `/api/${props.user._id}/tasks`
+        userTasksDataFetch: `/api/${props.user._id}/tasks`,
+        addTaskStart: (userID) => ({
+            addTaskStartFetch: {
+                url: `/api/${userID}/tasks/start`,
+                method: 'POST',
+                andThen: () => (refreshUserTasksData)
+            }
+        }),
+        addTaskEnd: (userID) => ({
+            addTaskStartFetch: {
+                url: `/api/${userID}/tasks/end`,
+                method: 'POST',
+                andThen: () => (refreshUserTasksData)
+            }
+        })
     }
 })(TasksList);
