@@ -12,6 +12,7 @@ class TasksList extends Component {
         this.handleTasksFilterState = this.handleTasksFilterState.bind(this);
         this.handleAddTaskStart = this.handleAddTaskStart.bind(this);
         this.handleAddTaskEnd = this.handleAddTaskEnd.bind(this);
+        this.handleDeleteAllTasksSubmit = this.handleDeleteAllTasksSubmit.bind(this);
         this.handleEditTaskNameSubmit = this.handleEditTaskNameSubmit.bind(this);
         this.handleEditTaskStatusSubmit = this.handleEditTaskStatusSubmit.bind(this);
         this.handleDeleteTaskSubmit = this.handleDeleteTaskSubmit.bind(this);
@@ -35,6 +36,13 @@ class TasksList extends Component {
 
         addTaskEnd(user._id);
     }
+    handleDeleteAllTasksSubmit(event) {
+        event.preventDefault();
+
+        const { user, deleteAllTasks } = this.props;
+
+        deleteAllTasks(user._id);
+    }
     handleEditTaskNameSubmit(userID, taskID, updateTask) {
         const { editTask } = this.props;
 
@@ -46,9 +54,9 @@ class TasksList extends Component {
         editTask(userID, taskID, updateTask);
     }
     handleDeleteTaskSubmit(userID, taskID) {
-        const { deleteTask } = this.props;
+        const { deleteAllTasks } = this.props;
 
-        deleteTask(userID, taskID);
+        deleteAllTasks(userID, taskID);
     }
     render() {
         const { userTasksDataFetch } = this.props;
@@ -73,6 +81,7 @@ class TasksList extends Component {
                 handleTasksFilterState,
                 handleAddTaskStart,
                 handleAddTaskEnd,
+                handleDeleteAllTasksSubmit,
                 handleEditTaskNameSubmit,
                 handleEditTaskStatusSubmit,
                 handleDeleteTaskSubmit
@@ -117,8 +126,8 @@ class TasksList extends Component {
                                             }
                                         </li>
                                         <li>
-                                            <a className="button style5" >
-                                                Delete All
+                                            <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
+                                                Delete Done Tasks
                                             </a>
                                         </li>
                                     </ul>
@@ -192,8 +201,8 @@ class TasksList extends Component {
                                             }
                                         </li>
                                         <li>
-                                            <a className="button style5" >
-                                                Delete All
+                                            <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
+                                                Delete Done Tasks
                                             </a>
                                         </li>
                                     </ul>
@@ -229,6 +238,13 @@ export default connect((props) => {
             addTaskStartFetch: {
                 url: `/api/${userID}/tasks/end`,
                 method: 'POST',
+                andThen: () => (refreshUserTasksData)
+            }
+        }),
+        deleteAllTasks: (userID) => ({
+            addTaskStartFetch: {
+                url: `/api/${userID}/tasks`,
+                method: 'DELETE',
                 andThen: () => (refreshUserTasksData)
             }
         }),

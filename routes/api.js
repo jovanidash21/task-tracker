@@ -130,6 +130,50 @@ router.post('/:userID/tasks/end', function(req, res, next) {
     }
 });
 
+router.delete('/:userID/tasks', function(req, res, next) {
+    if (req.user === undefined) {
+        res.redirect('/');
+    }
+    else {
+        var userID = req.params.userID;
+        if (req.user._id == userID) {
+            tasksData.find({owner: userID, isComplete: true},function(err, userCompletedTasks) {
+                if(err) {
+                    res.end(err);
+                }
+                else {
+                    userCompletedTasks.forEach(function (userCompletedTask) {
+                        usersData.findByIdAndUpdate(
+                            userID,
+                            { $pull: { tasks: userCompletedTask._id }},
+                            { new: true, upsert: true },
+                            function(err) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    userCompletedTask.remove(function(err, results) {
+                                        if(err) {
+                                            res.end(err);
+                                        }
+                                        else {
+                                            res.json(results);
+                                        }
+                                    });
+                                }
+                            }
+                        );
+
+                    });
+                }
+            });
+        }
+        else {
+            res.redirect('/');
+        }
+    }
+});
+
 router.patch('/:userID/task/:taskID', function(req, res, next) {
     if (req.user === undefined) {
         res.redirect('/');
