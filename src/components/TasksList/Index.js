@@ -103,12 +103,13 @@ class TasksList extends Component {
                                         {
                                             userTasks.tasks.length
                                         }
-                                        &nbsp;finished&nbsp;
+                                        &nbsp;
                                         {
                                             userTasks.tasks.length > 1
                                                 ? "tasks"
                                                 : "task"
                                         }
+                                        &nbsp;finished
                                     </h2>
                                 </header>
                                 <div className="row 50%">
@@ -125,7 +126,7 @@ class TasksList extends Component {
                                         <ul className="actions">
                                             <li>
                                                 <a className="button style1" onClick={handleAddTaskStart}>
-                                                    Add
+                                                    Add at the Start
                                                 </a>
                                             </li>
                                             <li>
@@ -199,7 +200,7 @@ class TasksList extends Component {
                                         <ul className="actions">
                                             <li>
                                                 <a className="button style1" onClick={handleAddTaskEnd}>
-                                                    Add
+                                                    Add at the End
                                                 </a>
                                             </li>
                                             <li>
@@ -241,12 +242,13 @@ class TasksList extends Component {
                                         {
                                             userTasks.tasks.length
                                         }
-                                        &nbsp;finished&nbsp;
+                                        &nbsp;
                                         {
                                             userTasks.tasks.length > 1
                                                 ? "tasks"
                                                 : "task"
                                         }
+                                        &nbsp;finished
                                     </h2>
                                 </header>
                             </section>

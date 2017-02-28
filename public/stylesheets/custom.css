@@ -107,6 +107,10 @@ section#banner h1
     font-size: 2em;
     letter-spacing: 10px;
 }
+article.container header
+{
+    margin: 0.5em 0;
+}
 article.container header i.fa
 {
     color: #ff0f34;
@@ -114,6 +118,25 @@ article.container header i.fa
 article.container header h3
 {
     text-transform: none;
+}
+input[type="button"].style3,
+input[type="submit"].style3,
+input[type="reset"].style3,
+button.style3,
+.button.style3
+{
+    background: #cccddd;
+    color: #3a3939;
+    box-shadow: inset 0 0 0 1px #555555;
+}
+input[type="button"].style3:hover,
+input[type="submit"].style3:hover,
+input[type="reset"].style3:hover,
+button.style3:hover,
+.button.style3:hover
+{
+    background: #dddddd;
+    color: #151515;
 }
 input[type="button"].style4,
 input[type="submit"].style4,
