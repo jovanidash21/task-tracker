@@ -1,10 +1,20 @@
 body
 {
     overflow-y: scroll;
+    font-size: 12pt;
 }
 a
 {
     cursor: pointer;
+}
+hr
+{
+    margin: 0.2em 0;
+}
+input,
+select
+{
+    font-size: 12.01pt;
 }
 body.login-page .form
 {
@@ -41,6 +51,10 @@ body.login-page .form .input-container input:last-child
 {
     margin-left: 1%;
 }
+.container
+{
+    width: 700px;
+}
 section.loading-animation
 {
     margin: 0;
@@ -59,6 +73,10 @@ section.loading-animation > div > div
     background-color: #35b88f;
     height: 21px;
     width: 21px;
+}
+section#banner
+{
+    padding: 3em 0;
 }
 section#banner h1
 {
@@ -103,7 +121,6 @@ button.style5,
     color: #ffffff;
     box-shadow: inset 0 0 0 1px #e14222;
 }
-
 input[type="button"].style5:hover,
 input[type="submit"].style5:hover,
 input[type="reset"].style5:hover,
@@ -111,6 +128,14 @@ button.style5:hover,
 .button.style5:hover
 {
     background: #e0644b;
+}
+article.box.style3
+{
+    padding: 1em 4em;
+}
+article a.button
+{
+    padding: 0.5em 1.5em;
 }
 @media screen and (max-width: 736px)
 {

@@ -64,7 +64,7 @@ class TasksList extends Component {
 
         if (allUserTasksDataFetch.pending) {
             return (
-                <article className="container box style3">
+                <article className="container box style3" style={{padding: "none"}}>
                     <LoadingAnimation />
                 </article>
             );
@@ -121,33 +121,29 @@ class TasksList extends Component {
                                         </select>
                                     </div>
                                 </div>
-                            </section>
-                        </form>
-                    </article>
-                    <article className="container box style3">
-                        <form>
-                            <div className="row 50%">
-                                <div className="12u$">
-                                    <ul className="actions">
-                                        <li>
-                                            <a className="button style1" onClick={handleAddTaskStart}>
-                                                Add
-                                            </a>
-                                        </li>
-                                        <li>
-                                            {
-                                                tasksFilter == 'undoneTasks'
-                                                    ?
-                                                    ""
-                                                    :
-                                                    <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
-                                                        Delete Done Tasks
-                                                    </a>
-                                            }
-                                        </li>
-                                    </ul>
+                                <div className="row 50%">
+                                    <div className="12u$">
+                                        <ul className="actions">
+                                            <li>
+                                                <a className="button style1" onClick={handleAddTaskStart}>
+                                                    Add
+                                                </a>
+                                            </li>
+                                            <li>
+                                                {
+                                                    tasksFilter == 'undoneTasks'
+                                                        ?
+                                                        ""
+                                                        :
+                                                        <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
+                                                            Delete Done Tasks
+                                                        </a>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
                         </form>
                     </article>
                     {
@@ -194,28 +190,59 @@ class TasksList extends Component {
                     }
                     <article className="container box style3">
                         <form>
-                            <div className="row 50%">
-                                <div className="12u$">
-                                    <ul className="actions">
-                                        <li>
-                                            <a className="button style1" onClick={handleAddTaskEnd}>
-                                                Add
-                                            </a>
-                                        </li>
-                                        <li>
-                                            {
-                                                tasksFilter == 'undoneTasks'
-                                                    ?
-                                                    ""
-                                                    :
-                                                    <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
-                                                        Delete Done Tasks
-                                                    </a>
-                                            }
-                                        </li>
-                                    </ul>
+                            <section>
+                                <div className="row 50%">
+                                    <div className="12u$">
+                                        <ul className="actions">
+                                            <li>
+                                                <a className="button style1" onClick={handleAddTaskEnd}>
+                                                    Add
+                                                </a>
+                                            </li>
+                                            <li>
+                                                {
+                                                    tasksFilter == 'undoneTasks'
+                                                        ?
+                                                        ""
+                                                        :
+                                                        <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
+                                                            Delete Done Tasks
+                                                        </a>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                                <div className="row 50%">
+                                    <div className="12u$">
+                                        <select value={tasksFilter} onChange={handleTasksFilterState}>
+                                            <option value="allTasks">All Tasks</option>
+                                            <option value="doneTasks">Done Tasks</option>
+                                            <option value="undoneTasks">Undone Tasks</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <header>
+                                    <h2>
+                                        {
+                                            userTasks.tasks.filter(userTask =>
+                                                userTask.isComplete == true
+                                            ).length
+                                        }
+                                        &nbsp;out of&nbsp;
+                                        {
+                                            userTasks.tasks.length
+                                        }
+                                        &nbsp;
+                                        {
+                                            userTasks.tasks.length > 1
+                                                ? "tasks are"
+                                                : "task is"
+                                        }
+                                        &nbsp;done
+                                    </h2>
+                                </header>
+                            </section>
                         </form>
                     </article>
                 </div>
