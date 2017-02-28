@@ -106,10 +106,10 @@ class TasksList extends Component {
                                         &nbsp;
                                         {
                                             userTasks.tasks.length > 1
-                                                ? "tasks"
-                                                : "task"
+                                                ? "tasks are"
+                                                : "task is"
                                         }
-                                        &nbsp;are done
+                                        &nbsp;done
                                     </h2>
                                 </header>
                                 <div className="row 50%">
