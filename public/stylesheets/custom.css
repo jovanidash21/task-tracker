@@ -17,6 +17,10 @@ select
 {
     font-size: 12.01pt;
 }
+body.login-page
+{
+    background-color: #35b88f;
+}
 body.login-page .form
 {
     margin: 0;
@@ -38,7 +42,19 @@ body.login-page .alert-message
 body.login-page .form
 {
     max-width: 350px;
+    text-align: left;
     width: 100%;
+}
+body.login-page .form label
+{
+    color: #555555;
+    font-size: 12px;
+    padding: 0 0 0 3px;
+}
+body.login-page .form input,
+body.login-page .form .input-container input
+{
+    margin: 0 0 5px 0;
 }
 body.login-page .form .input-container input
 {
@@ -51,6 +67,10 @@ body.login-page .form .input-container input:first-child
 body.login-page .form .input-container input:last-child
 {
     margin-left: 1%;
+}
+body.login-page .form p
+{
+    text-align: center;
 }
 .container
 {
