@@ -156,11 +156,11 @@ class TaskContainer extends Component {
                                                     userTask.isComplete == false
                                                         ?
                                                         <a className="button style3" onClick={handleEditTaskStatusSubmit}>
-                                                            Mark Done
+                                                            Finished
                                                         </a>
                                                         :
                                                         <a className="button style3" onClick={handleEditTaskStatusSubmit}>
-                                                            Mark Undone
+                                                            Unfinished
                                                         </a>
                                                 }
                                             </li>

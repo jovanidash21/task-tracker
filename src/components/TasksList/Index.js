@@ -103,21 +103,20 @@ class TasksList extends Component {
                                         {
                                             userTasks.tasks.length
                                         }
-                                        &nbsp;
+                                        &nbsp;finished&nbsp;
                                         {
                                             userTasks.tasks.length > 1
-                                                ? "tasks are"
-                                                : "task is"
+                                                ? "tasks"
+                                                : "task"
                                         }
-                                        &nbsp;done
                                     </h2>
                                 </header>
                                 <div className="row 50%">
                                     <div className="12u$">
                                         <select value={tasksFilter} onChange={handleTasksFilterState}>
                                             <option value="allTasks">All Tasks</option>
-                                            <option value="doneTasks">Done Tasks</option>
-                                            <option value="undoneTasks">Undone Tasks</option>
+                                            <option value="finishedTasks">Finished Tasks</option>
+                                            <option value="unfinishedTasks">Unfinished Tasks</option>
                                         </select>
                                     </div>
                                 </div>
@@ -131,7 +130,7 @@ class TasksList extends Component {
                                             </li>
                                             <li>
                                                 {
-                                                    tasksFilter == 'undoneTasks' ||
+                                                    tasksFilter == 'unfinishedTasks' ||
                                                         userTasks.tasks.filter(userTask =>
                                                         userTask.isComplete == true
                                                     ).length == 0
@@ -140,7 +139,7 @@ class TasksList extends Component {
                                                         ""
                                                         :
                                                         <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
-                                                            Delete Done Tasks
+                                                            Delete Finished Tasks
                                                         </a>
                                                 }
                                             </li>
@@ -164,7 +163,7 @@ class TasksList extends Component {
                                 />
                             )
                             :
-                            tasksFilter == 'doneTasks'
+                            tasksFilter == 'finishedTasks'
                                 ?
                                 userTasks.tasks.filter(userTask =>
                                     userTask.isComplete == true
@@ -205,16 +204,17 @@ class TasksList extends Component {
                                             </li>
                                             <li>
                                                 {
-                                                    tasksFilter == 'undoneTasks' ||
+                                                    tasksFilter == 'unfinishedTasks' ||
                                                     userTasks.tasks.filter(userTask =>
                                                         userTask.isComplete == true
                                                     ).length == 0
+
 
                                                         ?
                                                         ""
                                                         :
                                                         <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
-                                                            Delete Done Tasks
+                                                            Delete Finished Tasks
                                                         </a>
                                                 }
                                             </li>
@@ -225,8 +225,8 @@ class TasksList extends Component {
                                     <div className="12u$">
                                         <select value={tasksFilter} onChange={handleTasksFilterState}>
                                             <option value="allTasks">All Tasks</option>
-                                            <option value="doneTasks">Done Tasks</option>
-                                            <option value="undoneTasks">Undone Tasks</option>
+                                            <option value="finishedTasks">Finished Tasks</option>
+                                            <option value="unfinishedTasks">Unfinished Tasks</option>
                                         </select>
                                     </div>
                                 </div>
@@ -241,13 +241,12 @@ class TasksList extends Component {
                                         {
                                             userTasks.tasks.length
                                         }
-                                        &nbsp;
+                                        &nbsp;finished&nbsp;
                                         {
                                             userTasks.tasks.length > 1
-                                                ? "tasks are"
-                                                : "task is"
+                                                ? "tasks"
+                                                : "task"
                                         }
-                                        &nbsp;done
                                     </h2>
                                 </header>
                             </section>
