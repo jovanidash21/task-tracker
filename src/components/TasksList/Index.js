@@ -114,19 +114,6 @@ class TasksList extends Component {
                                         </li>
                                         <li>
                                             {
-                                                tasksFilter == 'doneTasks'
-                                                    ?
-                                                    <a className="button style3" >
-                                                        Mark All Undone
-                                                    </a>
-                                                    :
-                                                    <a className="button style3" >
-                                                        Mark All Done
-                                                    </a>
-                                            }
-                                        </li>
-                                        <li>
-                                            {
                                                 tasksFilter == 'undoneTasks'
                                                     ?
                                                     ""
@@ -192,19 +179,6 @@ class TasksList extends Component {
                                             <a className="button style1" onClick={handleAddTaskEnd}>
                                                 Add
                                             </a>
-                                        </li>
-                                        <li>
-                                            {
-                                                tasksFilter == 'doneTasks'
-                                                    ?
-                                                    <a className="button style3" >
-                                                        Mark All Undone
-                                                    </a>
-                                                    :
-                                                    <a className="button style3" >
-                                                        Mark All Done
-                                                    </a>
-                                            }
                                         </li>
                                         <li>
                                             {
