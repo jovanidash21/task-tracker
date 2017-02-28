@@ -31,6 +31,8 @@ body.login-page .form
 }
 body.login-page .form .thumbnail
 {
+    height: 180px;
+    width: 180px;
     padding: 21px 21px;
 }
 body.login-page .alert-message
