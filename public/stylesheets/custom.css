@@ -113,7 +113,7 @@ article.container header
 }
 article.container header i.fa
 {
-    color: #ff0f34;
+    color: #ff525c;
 }
 article.container header h3
 {
@@ -127,7 +127,7 @@ button.style3,
 {
     background: #cccddd;
     color: #3a3939;
-    box-shadow: inset 0 0 0 1px #555555;
+    box-shadow: inset 0 0 0 1px #cccddd;
 }
 input[type="button"].style3:hover,
 input[type="submit"].style3:hover,
