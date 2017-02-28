@@ -8,11 +8,18 @@ class TasksList extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {tasksFilter: 'allTasks'};
+        this.handleTasksFilterState = this.handleTasksFilterState.bind(this);
         this.handleAddTaskStart = this.handleAddTaskStart.bind(this);
         this.handleAddTaskEnd = this.handleAddTaskEnd.bind(this);
         this.handleEditTaskNameSubmit = this.handleEditTaskNameSubmit.bind(this);
         this.handleEditTaskStatusSubmit = this.handleEditTaskStatusSubmit.bind(this);
         this.handleDeleteTaskSubmit = this.handleDeleteTaskSubmit.bind(this);
+    }
+    handleTasksFilterState(event) {
+        event.preventDefault();
+
+        this.setState({tasksFilter: event.target.value});
     }
     handleAddTaskStart(event) {
         event.preventDefault();
@@ -61,7 +68,9 @@ class TasksList extends Component {
             const [ userTasksData ] = allUserTasksDataFetch.value;
             const userTasks = userTasksData.userTasks;
             const { user } = this.props;
+            const { tasksFilter } = this.state;
             const {
+                handleTasksFilterState,
                 handleAddTaskStart,
                 handleAddTaskEnd,
                 handleEditTaskNameSubmit,
@@ -75,10 +84,10 @@ class TasksList extends Component {
                         <form>
                             <div className="row">
                                 <div className="12u">
-                                    <select name="taskFilter">
+                                    <select value={tasksFilter} onChange={handleTasksFilterState}>
                                         <option value="allTasks">All Tasks</option>
-                                        <option value="undoneTasks">Undone Tasks</option>
                                         <option value="doneTasks">Done Tasks</option>
+                                        <option value="undoneTasks">Undone Tasks</option>
                                     </select>
                                 </div>
                             </div>
@@ -110,16 +119,46 @@ class TasksList extends Component {
                         </form>
                     </article>
                     {
-                        userTasks.tasks.map(userTask =>
-                            <TaskContainer
-                                key={userTask._id}
-                                user={user}
-                                userTask={userTask}
-                                handleEditTaskNameSubmit={handleEditTaskNameSubmit}
-                                handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
-                                handleDeleteTaskSubmit={handleDeleteTaskSubmit}
-                            />
-                        )
+                        tasksFilter == 'allTasks'
+                            ?
+                            userTasks.tasks.map(userTask =>
+                                <TaskContainer
+                                    key={userTask._id}
+                                    user={user}
+                                    userTask={userTask}
+                                    handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                    handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                    handleDeleteTaskSubmit={handleDeleteTaskSubmit}
+                                />
+                            )
+                            :
+                            tasksFilter == 'doneTasks'
+                                ?
+                                userTasks.tasks.filter(userTask =>
+                                    userTask.isComplete == true
+                                ).map(userTask =>
+                                    <TaskContainer
+                                        key={userTask._id}
+                                        user={user}
+                                        userTask={userTask}
+                                        handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                        handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                        handleDeleteTaskSubmit={handleDeleteTaskSubmit}
+                                    />
+                                )
+                                :
+                                userTasks.tasks.filter(userTask =>
+                                    userTask.isComplete == false
+                                ).map(userTask =>
+                                    <TaskContainer
+                                        key={userTask._id}
+                                        user={user}
+                                        userTask={userTask}
+                                        handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                        handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                        handleDeleteTaskSubmit={handleDeleteTaskSubmit}
+                                    />
+                                )
                     }
                     <article className="container box style3">
                         <form>
