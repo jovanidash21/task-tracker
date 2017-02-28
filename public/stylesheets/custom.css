@@ -1,7 +1,8 @@
 body
 {
-    overflow-y: scroll;
+    background-image: none;
     font-size: 12pt;
+    overflow-y: scroll;
 }
 a
 {
