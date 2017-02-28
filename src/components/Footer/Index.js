@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SocialLinks from './SocialLinks';
+import Logo from './Logo';
 import Menu from './Menu';
 
 class Footer extends Component {
@@ -17,6 +18,7 @@ class Footer extends Component {
                     editingProfileState={editingProfileState}
                     handleEditProfileState={handleEditProfileState}
                 />
+                <Logo />
                 <Menu />
             </section>
         )
