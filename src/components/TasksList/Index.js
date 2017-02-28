@@ -64,7 +64,7 @@ class TasksList extends Component {
 
         if (allUserTasksDataFetch.pending) {
             return (
-                <article className="container box style3" style={{padding: "none"}}>
+                <article className="container box style3" style={{padding: "50px"}}>
                     <LoadingAnimation />
                 </article>
             );

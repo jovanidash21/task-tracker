@@ -109,7 +109,14 @@ class TaskContainer extends Component {
         } = this;
 
         return(
-            <article className="container box style3">
+            <article className="container box style3" style={
+                userTask.isComplete == true
+                    ?
+                    {backgroundColor: "#aaaaaa"}
+                    :
+                    {backgroundColor: "#ffffff"}
+            }
+            >
                 {
                     editingTask == false
                         ?
@@ -138,7 +145,6 @@ class TaskContainer extends Component {
                                 }
                                 <div className="row 50%">
                                     <div className="12u$">
-                                        <hr />
                                         <ul className="actions">
                                             <li>
                                                 <a className="button style1" onClick={handleEditTaskState}>
@@ -179,7 +185,6 @@ class TaskContainer extends Component {
                                 }
                                 <div className="row 50%">
                                     <div className="12u$">
-                                        <hr />
                                         <ul className="actions">
                                             <li>
                                                 <a className="button style1" onClick={handleEditTaskNameSubmit}>
