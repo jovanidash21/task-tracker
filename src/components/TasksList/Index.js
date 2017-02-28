@@ -104,9 +104,17 @@ class TasksList extends Component {
                                             </a>
                                         </li>
                                         <li>
-                                            <a className="button style3" >
-                                                Mark All Done
-                                            </a>
+                                            {
+                                                tasksFilter == 'doneTasks'
+                                                    ?
+                                                    <a className="button style3" >
+                                                        Mark All Undone
+                                                    </a>
+                                                    :
+                                                    <a className="button style3" >
+                                                        Mark All Done
+                                                    </a>
+                                            }
                                         </li>
                                         <li>
                                             <a className="button style5" >
@@ -171,9 +179,17 @@ class TasksList extends Component {
                                             </a>
                                         </li>
                                         <li>
-                                            <a className="button style3" >
-                                                Mark All Done
-                                            </a>
+                                            {
+                                                tasksFilter == 'doneTasks'
+                                                    ?
+                                                    <a className="button style3" >
+                                                        Mark All Undone
+                                                    </a>
+                                                    :
+                                                    <a className="button style3" >
+                                                        Mark All Done
+                                                    </a>
+                                            }
                                         </li>
                                         <li>
                                             <a className="button style5" >
