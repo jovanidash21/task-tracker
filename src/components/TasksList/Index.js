@@ -91,15 +91,37 @@ class TasksList extends Component {
                 <div>
                     <article className="container box style3">
                         <form>
-                            <div className="row">
-                                <div className="12u">
-                                    <select value={tasksFilter} onChange={handleTasksFilterState}>
-                                        <option value="allTasks">All Tasks</option>
-                                        <option value="doneTasks">Done Tasks</option>
-                                        <option value="undoneTasks">Undone Tasks</option>
-                                    </select>
+                            <section>
+                                <header>
+                                    <h2>
+                                        {
+                                            userTasks.tasks.filter(userTask =>
+                                                userTask.isComplete == true
+                                            ).length
+                                        }
+                                        &nbsp;out of&nbsp;
+                                        {
+                                            userTasks.tasks.length
+                                        }
+                                        &nbsp;
+                                        {
+                                            userTasks.tasks.length > 1
+                                                ? "tasks"
+                                                : "task"
+                                        }
+                                        &nbsp;are done
+                                    </h2>
+                                </header>
+                                <div className="row 50%">
+                                    <div className="12u$">
+                                        <select value={tasksFilter} onChange={handleTasksFilterState}>
+                                            <option value="allTasks">All Tasks</option>
+                                            <option value="doneTasks">Done Tasks</option>
+                                            <option value="undoneTasks">Undone Tasks</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
                         </form>
                     </article>
                     <article className="container box style3">
