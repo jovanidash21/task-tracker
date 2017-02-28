@@ -48,7 +48,7 @@ class EditProfile extends Component {
 
         return(
             <article className="container box style3">
-                <form onSubmit={handleEditProfileSubmit}>
+                <form>
                     <section>
                         <header>
                             <h2>About</h2>
@@ -167,7 +167,9 @@ class EditProfile extends Component {
                             <div className="12u$">
                                 <ul className="actions">
                                     <li>
-                                        <input type="submit" value="Update" />
+                                        <a className="button style1" onClick={handleEditProfileSubmit}>
+                                            Update
+                                        </a>
                                     </li>
                                     <li>
                                         <a className="button style3" onClick={handleEditProfileState}>
