@@ -126,9 +126,15 @@ class TasksList extends Component {
                                             }
                                         </li>
                                         <li>
-                                            <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
-                                                Delete Done Tasks
-                                            </a>
+                                            {
+                                                tasksFilter == 'undoneTasks'
+                                                    ?
+                                                    ""
+                                                    :
+                                                    <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
+                                                        Delete Done Tasks
+                                                    </a>
+                                            }
                                         </li>
                                     </ul>
                                 </div>
@@ -201,9 +207,15 @@ class TasksList extends Component {
                                             }
                                         </li>
                                         <li>
-                                            <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
-                                                Delete Done Tasks
-                                            </a>
+                                            {
+                                                tasksFilter == 'undoneTasks'
+                                                    ?
+                                                    ""
+                                                    :
+                                                    <a className="button style5" onClick={handleDeleteAllTasksSubmit}>
+                                                        Delete Done Tasks
+                                                    </a>
+                                            }
                                         </li>
                                     </ul>
                                 </div>
