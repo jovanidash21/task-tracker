@@ -55,15 +55,21 @@ class EditProfile extends Component {
                         </header>
                         <div className="row 50%">
                             <div className="12u$">
-                                <label htmlFor="username">Username:</label>
+                                <label htmlFor="username">Username&nbsp;
+                                    <span className="required">*</span>
+                                </label>
                                 <input id="username" ref="username" type="text" className="text" placeholder="Username" defaultValue={user.username} required />
                             </div>
                             <div className="6u 12u$(mobile)">
-                                <label htmlFor="firstName">First Name:</label>
+                                <label htmlFor="firstName">First Name&nbsp;
+                                    <span className="required">*</span>
+                                </label>
                                 <input id="firstName" ref="firstName" type="text" className="text" placeholder="First Name" defaultValue={user.firstName} required />
                             </div>
                             <div className="6u$ 12u$(mobile)">
-                                <label htmlFor="lastName">Last Name:</label>
+                                <label htmlFor="lastName">Last Name&nbsp;
+                                    <span className="required">*</span>
+                                </label>
                                 <input id="lastName" ref="lastName" type="text" className="text" placeholder="Last Name" defaultValue={user.lastName} required />
                             </div>
                             <div className="12u$">

@@ -57,10 +57,6 @@ body.login-page .form label
     font-size: 14px;
     padding: 0 0 0 3px;
 }
-body.login-page .form label span.required
-{
-    color: #ee3926;
-}
 body.login-page .form input,
 body.login-page .form .input-container input
 {
@@ -198,6 +194,10 @@ article.complete {
 article.complete ul.complete
 {
     color: #3a3939 !important;
+}
+span.required
+{
+    color: #ee3926;
 }
 @media screen and (max-width: 736px)
 {
