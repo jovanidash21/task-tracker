@@ -15,15 +15,15 @@ class SocialLinks extends Component {
         return (
             <li>
                 Add your social media links here.&nbsp;
-                {
-                    editingProfileState == false
-                        ?
-                        <a onClick={handleEditProfileState}>
-                            Add
-                        </a>
-                        :
-                        ""
-                }
+                <a onClick={handleEditProfileState}>
+                    {
+                        editingProfileState == false
+                            ?
+                            "Add"
+                            :
+                            "Cancel"
+                    }
+                </a>
             </li>
         )
     }
