@@ -35,7 +35,11 @@ body.login-page .form .thumbnail
     width: 180px;
     padding: 21px 21px;
 }
-body.login-page .alert-message
+body.login-page p
+{
+    text-align: center;
+}
+body.login-page p.alert-message
 {
     color: #a93127;
     font-size: 17px;
@@ -50,8 +54,12 @@ body.login-page .form
 body.login-page .form label
 {
     color: #555555;
-    font-size: 12px;
+    font-size: 14px;
     padding: 0 0 0 3px;
+}
+body.login-page .form label span.required
+{
+    color: #ee3926;
 }
 body.login-page .form input,
 body.login-page .form .input-container input
@@ -70,9 +78,9 @@ body.login-page .form .input-container input:last-child
 {
     margin-left: 1%;
 }
-body.login-page .form p
+body.login-page .form p.message
 {
-    text-align: center;
+    font-size: 14px;
 }
 .container
 {

@@ -13,21 +13,26 @@ html
                 p.alert-message
                     | #{alertMessage}
             form.login-form(action='/login', method='post')
-                label(for='loginUsername') Username:
+                label(for='loginUsername') Username&nbsp;
+                    span.required *
                 input(id='loginUsername', name='username', type='text', placeholder='Username', required='required', autocomplete='off')
-                label(for='loginPassword') Password:
+                label(for='loginPassword') Password&nbsp;
+                    span.required *
                 input(id='loginPassword' name='password', type='password', placeholder='Password', required='required', autocomplete='off')
                 button Login
                 p.message Not registered?&nbsp;
                     a(href='#') Create an account
             form.register-form(action='/signup', method='post')
-                label(for='username') Username:
-                input(id='username', name='username', type='text', placeholder='username', required='required', autocomplete='off')
-                label(for='firstName') Full Name:
+                label(for='username') Username&nbsp;
+                    span.required *
+                input(id='username', name='username', type='text', placeholder='Username', required='required', autocomplete='off')
+                label(for='firstName') Full Name&nbsp;
+                    span.required *
                 .input-container
                     input(id='firstName', name='firstName', type='text', placeholder='First Name', required='required', autocomplete='off')
                     input(name='lastName', type='text', placeholder='Last Name', required='required', autocomplete='off')
-                label(for='password') Password:
+                label(for='password') Password&nbsp;
+                    span.required *
                 .input-container
                     input(name='password', id='password', type='password', placeholder='Password', required='required', autocomplete='off')
                     input(name='confirmPassword', id='confirmPassword', type='password', placeholder='Confirm Password', required='required', autocomplete='off')
