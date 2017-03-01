@@ -132,10 +132,9 @@ class TasksList extends Component {
                                             <li>
                                                 {
                                                     tasksFilter == 'unfinishedTasks' ||
-                                                        userTasks.tasks.filter(userTask =>
+                                                    userTasks.tasks.filter(userTask =>
                                                         userTask.isComplete == true
                                                     ).length == 0
-
                                                         ?
                                                         ""
                                                         :
@@ -209,8 +208,6 @@ class TasksList extends Component {
                                                     userTasks.tasks.filter(userTask =>
                                                         userTask.isComplete == true
                                                     ).length == 0
-
-
                                                         ?
                                                         ""
                                                         :

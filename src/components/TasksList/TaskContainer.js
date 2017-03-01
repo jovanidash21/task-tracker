@@ -18,14 +18,7 @@ class TaskContainer extends Component {
         return (
             <div>
                 <hr />
-                <ul className="menu" style={
-                    userTask.isComplete == true
-                        ?
-                        {color: "#ffffff"}
-                        :
-                        {color: "#3a3939"}
-                }
-                >
+                <ul className="menu">
                     <li>
                         <b>
                             Created :&nbsp;
@@ -116,12 +109,12 @@ class TaskContainer extends Component {
         } = this;
 
         return(
-            <article className="container box style3" style={
-                userTask.isComplete == true
+            <article className={
+                userTask.isComplete == false
                     ?
-                    {backgroundColor: "#555555"}
+                    "container box style3"
                     :
-                    {backgroundColor: "#ffffff"}
+                    "container box style3 complete"
             }
             >
                 {
@@ -139,7 +132,7 @@ class TaskContainer extends Component {
                                             :
                                             <div>
                                                 <i className="fa fa-check-square-o" />
-                                                <h3 style={{color: "#ffffff"}}>
+                                                <h3>
                                                     <strike>
                                                         {userTask.name}
                                                     </strike>

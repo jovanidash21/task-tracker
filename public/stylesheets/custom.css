@@ -183,6 +183,14 @@ article a.button
 {
     padding: 0.5em 1.5em;
 }
+article.complete {
+    background-color: #555555 !important;
+    color: #ffffff !important;
+}
+article.complete ul.complete
+{
+    color: #3a3939 !important;
+}
 @media screen and (max-width: 736px)
 {
     section#banner h1
