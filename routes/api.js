@@ -75,7 +75,7 @@ router.post('/:userID/tasks/start', function(req, res, next) {
                     usersData.findByIdAndUpdate(
                         userID,
                         { $push: { tasks: { $each: [taskID], $position: 0 }}},
-                        { new: true, upsert: true },
+                        { safe: true, upsert: true, new: true },
                         function(err, results) {
                             if(err) {
                                 res.end(err);
@@ -111,7 +111,7 @@ router.post('/:userID/tasks/end', function(req, res, next) {
                     usersData.findByIdAndUpdate(
                         userID,
                         { $push: { tasks: taskID }},
-                        { new: true, upsert: true },
+                        { safe: true, upsert: true, new: true },
                         function(err, results) {
                             if(err) {
                                 res.end(err);
