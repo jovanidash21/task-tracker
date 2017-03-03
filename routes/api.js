@@ -147,12 +147,12 @@ router.delete('/:userID/tasks', function(req, res, next) {
                             userID,
                             { $pull: { tasks: userCompletedTask._id }},
                             { new: true, upsert: true },
-                            function(err) {
+                            function(err, results) {
                                 if(err) {
                                     res.end(err);
                                 }
                                 else {
-                                    userCompletedTask.remove(function(err, results) {
+                                    userCompletedTask.remove(function(err) {
                                         if(err) {
                                             res.end(err);
                                         }
@@ -163,7 +163,6 @@ router.delete('/:userID/tasks', function(req, res, next) {
                                 }
                             }
                         );
-
                     });
                 }
             });
@@ -226,26 +225,26 @@ router.delete('/:userID/task/:taskID', function(req, res, next) {
                         res.redirect('/');
                     }
                     else {
-                        taskData.remove(function(err) {
-                            if(err) {
-                                res.end(err);
-                            }
-                            else {
-                                usersData.findByIdAndUpdate(
-                                    userID,
-                                    { $pull: { tasks: taskID }},
-                                    { new: true, upsert: true },
-                                    function(err, results) {
-                                        if(err) {
+                        usersData.findByIdAndUpdate(
+                            userID,
+                            { $pull: { tasks: taskID }},
+                            { new: true, upsert: true },
+                            function(err, results) {
+                                if(err) {
+                                    res.end(err);
+                                }
+                                else {
+                                    taskData.remove(function(err) {
+                                        if (err) {
                                             res.end(err);
                                         }
                                         else {
                                             res.json(results);
                                         }
-                                    }
-                                );
+                                    });
+                                }
                             }
-                        });
+                        );
                     }
                 }
             });
