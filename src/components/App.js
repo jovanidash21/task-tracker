@@ -93,7 +93,7 @@ export default connect(() => {
     return {
         userDataFetch: `/api/user`,
         editProfile: (userID, updateProfile) => ({
-            editMovieFetch: {
+            editProfileFetch: {
                 url: `/api/${userID}/`,
                 method: 'PATCH',
                 body: JSON.stringify(updateProfile),

@@ -54,9 +54,9 @@ class TasksList extends Component {
         editTask(userID, taskID, updateTask);
     }
     handleDeleteTaskSubmit(userID, taskID) {
-        const { deleteAllTasks } = this.props;
+        const { deleteTask } = this.props;
 
-        deleteAllTasks(userID, taskID);
+        deleteTask(userID, taskID);
     }
     render() {
         const { userTasksDataFetch } = this.props;
@@ -276,21 +276,21 @@ export default connect((props) => {
             }
         }),
         addTaskEnd: (userID) => ({
-            addTaskStartFetch: {
+            addTaskEndFetch: {
                 url: `/api/${userID}/tasks/end`,
                 method: 'POST',
                 andThen: () => (refreshUserTasksData)
             }
         }),
         deleteFinishedTasks: (userID) => ({
-            addTaskStartFetch: {
+            deleteFinishedTasksFetch: {
                 url: `/api/${userID}/tasks`,
                 method: 'DELETE',
                 andThen: () => (refreshUserTasksData)
             }
         }),
         editTask: (userID, taskID, updateTask) => ({
-            addTaskStartFetch: {
+            editTaskFetch: {
                 url: `/api/${userID}/task/${taskID}`,
                 method: 'PATCH',
                 body: JSON.stringify(updateTask),
@@ -298,7 +298,7 @@ export default connect((props) => {
             }
         }),
         deleteTask: (userID, taskID) => ({
-            addTaskStartFetch: {
+            deleteTaskFetch: {
                 url: `/api/${userID}/task/${taskID}`,
                 method: 'DELETE',
                 andThen: () => (refreshUserTasksData)
