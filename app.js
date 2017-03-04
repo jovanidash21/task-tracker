@@ -37,6 +37,7 @@ passport.deserializeUser(usersData.deserializeUser());
 // mongoose configuration
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, options);
+mongoose.Promise = require('bluebird');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
