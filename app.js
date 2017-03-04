@@ -9,6 +9,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
+var Promise = require('bluebird');
 
 var options = {
   server: {
@@ -35,9 +36,8 @@ passport.serializeUser(usersData.serializeUser());
 passport.deserializeUser(usersData.deserializeUser());
 
 // mongoose configuration
-mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, options);
-mongoose.Promise = require('bluebird');
+mongoose.Promise = Promise;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
