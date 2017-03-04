@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
+var Promise = require('bluebird');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 var timestamps = require('mongoose-timestamp');
 var tasksData = require('./tasks-data-schema');
+
+mongoose.Promise = Promise;
 
 var usersDataSchema = new Schema
 (
