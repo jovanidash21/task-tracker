@@ -272,6 +272,8 @@ export default connect((props) => {
             addTaskStartFetch: {
                 url: `/api/${userID}/tasks/start`,
                 method: 'POST',
+                force: true,
+                refreshing: true,
                 andThen: () => (refreshUserTasksData)
             }
         }),
@@ -279,6 +281,8 @@ export default connect((props) => {
             addTaskEndFetch: {
                 url: `/api/${userID}/tasks/end`,
                 method: 'POST',
+                force: true,
+                refreshing: true,
                 andThen: () => (refreshUserTasksData)
             }
         }),
@@ -286,6 +290,8 @@ export default connect((props) => {
             deleteFinishedTasksFetch: {
                 url: `/api/${userID}/tasks`,
                 method: 'DELETE',
+                force: true,
+                refreshing: true,
                 andThen: () => (refreshUserTasksData)
             }
         }),
@@ -293,6 +299,8 @@ export default connect((props) => {
             editTaskFetch: {
                 url: `/api/${userID}/task/${taskID}`,
                 method: 'PATCH',
+                force: true,
+                refreshing: true,
                 body: JSON.stringify(updateTask),
                 andThen: () => (refreshUserTasksData)
             }
@@ -301,6 +309,8 @@ export default connect((props) => {
             deleteTaskFetch: {
                 url: `/api/${userID}/task/${taskID}`,
                 method: 'DELETE',
+                force: true,
+                refreshing: true,
                 andThen: () => (refreshUserTasksData)
             }
         })
