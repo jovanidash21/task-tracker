@@ -147,7 +147,7 @@ router.delete('/:userID/tasks', function(req, res, next) {
                             userID,
                             { $pull: { tasks: userCompletedTask._id }},
                             { new: true, upsert: true },
-                            function(err, results) {
+                            function(err) {
                                 if(err) {
                                     res.end(err);
                                 }
@@ -157,7 +157,7 @@ router.delete('/:userID/tasks', function(req, res, next) {
                                             res.end(err);
                                         }
                                         else {
-                                            res.json(results);
+                                            res.end;
                                         }
                                     });
                                 }
