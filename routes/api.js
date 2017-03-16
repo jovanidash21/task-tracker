@@ -157,7 +157,7 @@ router.delete('/:userID/tasks', function(req, res, next) {
                                             res.end(err);
                                         }
                                         else {
-                                            res.end;
+                                            res.end();
                                         }
                                     });
                                 }
