@@ -12,6 +12,9 @@
 
 ## Installation
 * Clone or download this repository.
+```
+git clone https://github.com/jovanidash21/coen3463-todoapp-t6.git
+```
 * Using a terminal or cmd, navigate to the project directory.
 * Install node modules.
 ```
