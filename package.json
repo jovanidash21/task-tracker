@@ -37,6 +37,6 @@
     "react-refetch": "^1.0.0",
     "react-spinkit": "^2.1.1",
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.1"
+    "webpack": "^3.4.1"
   }
 }
