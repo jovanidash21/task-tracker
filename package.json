@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "webpack -p",
     "build": "webpack -p",
-    "start": "node ./bin/www"
+    "start": "webpack --watch & nodemon ./bin/www --watch build"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
