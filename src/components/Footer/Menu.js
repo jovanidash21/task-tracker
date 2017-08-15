@@ -8,7 +8,7 @@ const Menu = () => {
           &copy; 2017. All rights reserved.
         </li>
         <li>
-          <a href="#" target="_blank">
+          <a href="https://github.com/jovanidash21/task-tracker" target="_blank">
             GitHub Project
           </a>
         </li>
