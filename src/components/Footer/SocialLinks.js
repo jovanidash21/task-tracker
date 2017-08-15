@@ -40,8 +40,8 @@ class SocialLinks extends Component {
             :
             <div>
               {
-                user.socialLinks.map(socialLink =>
-                  <div>
+                user.socialLinks.map((socialLink, i) =>
+                  <div key={i}>
                     {
                       socialLink.website == "" &&
                       socialLink.facebook == "" &&
