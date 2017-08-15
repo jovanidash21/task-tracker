@@ -4,7 +4,7 @@ var Spinner = require('react-spinkit');
 const LoadingAnimation  = () => {
   return(
     <section className="loading-animation">
-      <Spinner spinnerName='wandering-cubes' />
+      <Spinner name='wandering-cubes' />
     </section>
   )
 };
