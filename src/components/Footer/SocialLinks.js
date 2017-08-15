@@ -74,7 +74,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.facebook} className="icon fa-facebook" target="_blank">
                                   <span className="label">
-                                  Facebook
+                                    Facebook
                                   </span>
                                 </a>
                               </li>
@@ -86,7 +86,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.twitter} className="icon fa-twitter" target="_blank">
                                   <span className="label">
-                                  Twitter
+                                    Twitter
                                   </span>
                                 </a>
                               </li>
@@ -98,7 +98,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.instagram} className="icon fa-instagram" target="_blank">
                                   <span className="label">
-                                  Instagram
+                                    Instagram
                                   </span>
                                 </a>
                               </li>
@@ -110,7 +110,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.googleplus} className="icon fa-google-plus" target="_blank">
                                   <span className="label">
-                                  Google+
+                                    Google+
                                   </span>
                                 </a>
                               </li>
@@ -122,7 +122,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.linkedin} className="icon fa-linkedin" target="_blank">
                                   <span className="label">
-                                  LinkedIn
+                                    LinkedIn
                                   </span>
                                 </a>
                               </li>
@@ -134,7 +134,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.youtube} className="icon fa-youtube-play" target="_blank">
                                   <span className="label">
-                                  YouTube
+                                    YouTube
                                   </span>
                                 </a>
                               </li>
@@ -146,7 +146,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.github} className="icon fa-github" target="_blank">
                                   <span className="label">
-                                  GitHub
+                                    GitHub
                                   </span>
                                 </a>
                               </li>
@@ -158,7 +158,7 @@ class SocialLinks extends Component {
                               <li>
                                 <a href={socialLink.codepen} className="icon fa-codepen" target="_blank">
                                   <span className="label">
-                                  CodePen
+                                    CodePen
                                   </span>
                                 </a>
                               </li>
