@@ -8,17 +8,17 @@ mongoose.Promise = Promise;
 
 var tasksDataSchema = new Schema
 (
-    {
-        name: {type:String, default: 'Default task name'},
-        owner: {
-            type: Schema.Types.ObjectId,
-            ref: 'usersData'
-        },
-        isComplete : {type : Boolean, default : false}
+  {
+    name: {type:String, default: 'Default task name'},
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'usersData'
     },
-    {
-        collection: 'tasksData'
-    }
+    isComplete : {type : Boolean, default : false}
+  },
+  {
+    collection: 'tasksData'
+  }
 );
 
 tasksDataSchema.plugin(timestamps);
