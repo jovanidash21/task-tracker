@@ -46,9 +46,11 @@ npm run dev
 ## NPM Scripts
 * ```npm start``` - start the server.
 * ```npm run build``` - run the project in production mode.
-* ```npm run build:client``` - run client side in production mode.
-* ```npm run build:server``` - run server side in production mode.
 * ```npm run dev``` - run the project in dev mode.
+* ```npm run webpack:prod``` - run the webpack in production mode.
+* ```npm run webpack:dev``` - run the webpack in dev mode.
+* ```npm run node:prod``` - run the node server in production mode.
+* ```npm run node:dev``` - run the node server in dev mode.
 
 ## Credits
 - [Login Page](http://codepen.io/andytran/pen/GJOBZj)
